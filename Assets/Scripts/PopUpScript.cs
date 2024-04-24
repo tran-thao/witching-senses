@@ -31,21 +31,25 @@ public class PopUpScript : MonoBehaviour
     public void ShowMessage()
     {
         messagePopUpPanel.SetActive(true); // Activate the Message Pop-Up Panel
+        Time.timeScale = 0f; // Pause the game
     }
 
     public void CloseMessagePopUp()
     {
         messagePopUpPanel.SetActive(false); // Deactivate the Message Pop-Up Panel
+        Time.timeScale = 1f; // Resume the game
     }
 
     public void ShowWrongPopUp()
     {
         wrongPopUpPanel.SetActive(true); // Activate the Message Pop-Up Panel
+        Time.timeScale = 0f; // Pause the game
     }
 
     public void CloseWrongPopUp()
     {
         wrongPopUpPanel.SetActive(false); // Deactivate the Message Pop-Up Panel
+        Time.timeScale = 1f; // Resume the game
     }
 
 }

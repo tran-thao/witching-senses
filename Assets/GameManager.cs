@@ -7,7 +7,9 @@ public class GameManager : MonoBehaviour
 {
     public List<GameObject> ingredients; // List to store references to ingredients
     public GameObject gameOverPanel; // Reference to the game over panel
+    public GameObject successPanel; // Reference to the success panel
     private bool gameOver = false; // Track game over state
+    public int ingredientsCollected = 0;
 
     private void Start()
     {
@@ -19,6 +21,16 @@ public class GameManager : MonoBehaviour
         else
         {
             Debug.LogError("Game Over Panel reference is missing!");
+        }
+
+        if (successPanel != null)
+        {
+            
+            successPanel.SetActive(false); // Hide the success panel
+        }
+        else
+        {
+            Debug.LogError("Success Panel reference is missing!");
         }
     }
 
@@ -59,5 +71,13 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("MainMenu");
     }
 
+    private void Update()
+    {
+        if (ingredientsCollected >=3)
+        {
+            successPanel.SetActive(true);
+            Invoke("LoadMainMenu", 3f);
+        }
+    }
 }
 
