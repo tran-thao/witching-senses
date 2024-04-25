@@ -3,53 +3,35 @@ using UnityEngine.UI;
 
 public class PopUpScript : MonoBehaviour
 {
-    public GameObject welcomePopUpPanel; // Reference to the Welcome Pop-Up Panel GameObject
-    public GameObject messagePopUpPanel; // Reference to the Message Pop-Up Panel GameObject
-    public GameObject wrongPopUpPanel; // Reference to the Message Pop-Up Panel GameObject
+    public GameObject howToPopUpPanel; // Reference to the Welcome Pop-Up Panel GameObject
+    public GameObject successPopUpPanel; // Reference to the Message Pop-Up Panel GameObject
+    public GameObject wrongNotePopUpPanel; // Reference to the Message Pop-Up Panel GameObject
+    public GameObject GoToPianoPopUpPanel;
 
 
     void Start()
     {
-        messagePopUpPanel.SetActive(false);
-        wrongPopUpPanel.SetActive(false);
+        //this.gameObject.SetActive(false);
         // Show the initial welcome pop-up window at the beginning
-        ShowWelcomePopUp();
+        howToPopUpPanel.SetActive(false);
+        successPopUpPanel.SetActive(false);
+        wrongNotePopUpPanel.SetActive(false);
+
     }
 
-    void ShowWelcomePopUp()
+    // Show the pop-up panel
+    public void ShowPopUp(GameObject panel)
     {
-        welcomePopUpPanel.SetActive(true); // Activate the Welcome Pop-Up Panel
+
+        panel.SetActive(true); // Activate the Pop-Up Panel
+
         Time.timeScale = 0f; // Pause the game
     }
 
-    public void CloseWelcomePopUp()
+    public void ClosePopUp(GameObject panel)
     {
-        welcomePopUpPanel.SetActive(false); // Deactivate the Welcome Pop-Up Panel
+        panel.SetActive(false); // Hide the Pop-Up Panel
         Time.timeScale = 1f; // Resume the game
     }
-
-    public void ShowMessage()
-    {
-        messagePopUpPanel.SetActive(true); // Activate the Message Pop-Up Panel
-        Time.timeScale = 0f; // Pause the game
-    }
-
-    public void CloseMessagePopUp()
-    {
-        messagePopUpPanel.SetActive(false); // Deactivate the Message Pop-Up Panel
-        Time.timeScale = 1f; // Resume the game
-    }
-
-    public void ShowWrongPopUp()
-    {
-        wrongPopUpPanel.SetActive(true); // Activate the Message Pop-Up Panel
-        Time.timeScale = 0f; // Pause the game
-    }
-
-    public void CloseWrongPopUp()
-    {
-        wrongPopUpPanel.SetActive(false); // Deactivate the Message Pop-Up Panel
-        Time.timeScale = 1f; // Resume the game
-    }
-
 }
+

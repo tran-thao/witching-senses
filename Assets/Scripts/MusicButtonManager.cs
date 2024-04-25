@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using System.Collections;
 
 public class MusicButtonManager : MonoBehaviour
 {
@@ -9,16 +10,18 @@ public class MusicButtonManager : MonoBehaviour
     private List<int> sequence = new List<int>();
     private int currentIndex = 0;
     private bool playerTurn = false;
-    private bool gameCompleted = false;
+    public bool gameCompleted = false;
+    public GameObject pianoKeys;
+    public GameObject princess;
    
 
     void Start()
     {
         GenerateSequence();
-        Invoke("StartPlayingSequence", 3f);
+        //Invoke("StartPlayingSequence", 3f);
     }
 
-    void StartPlayingSequence()
+    public void StartPlayingSequence()
     {
         StartCoroutine(PlaySequence());
     }
@@ -46,7 +49,7 @@ public class MusicButtonManager : MonoBehaviour
         }
     }
 
-    System.Collections.IEnumerator PlaySequence()
+    IEnumerator PlaySequence()
     {
         foreach (int index in sequence)
         {
@@ -67,23 +70,22 @@ public class MusicButtonManager : MonoBehaviour
                 {
                     // Player completed the sequence
                     Debug.Log("Good job!");
-                    popUpScript.ShowMessage();
                     gameCompleted = true;
-                    SpawnIngredients();
-                    ResetGame();
+                    StartCoroutine(handleGameCompleted(1f));
                 }
             }
             else
             {
                 // Wrong input, restart the sequence
                 Debug.Log("Wrong input");
-                popUpScript.ShowWrongPopUp();
-                StartCoroutine( ResetGame());
+                popUpScript.ShowPopUp(popUpScript.wrongNotePopUpPanel);
+                princess.transform.position = new Vector2(-4.3f, -1.3f);
+                StartCoroutine(ResetGame());
             }
         }
     }
 
-    void SpawnIngredients()
+    private void SpawnIngredients()
     {
         //HashSet<Vector2> usedPositions = new HashSet<Vector2>(); // To keep track of used positions
 
@@ -100,17 +102,16 @@ public class MusicButtonManager : MonoBehaviour
 
             //    // Instantiate Ingredients prefab at the random position
             //    Instantiate(ingredientsPrefab, randomPosition, Quaternion.identity);
-            Instantiate(ingredientsPrefab, new Vector2(-60f, 0f), Quaternion.identity);
-            Instantiate(ingredientsPrefab, new Vector2(-3f, -20f), Quaternion.identity);
-            Instantiate(ingredientsPrefab, new Vector2(65f, -12f), Quaternion.identity);
+            Instantiate(ingredientsPrefab, new Vector2(-50f, 7f), Quaternion.identity);
+            Instantiate(ingredientsPrefab, new Vector2(50f, -23f), Quaternion.identity);
+            Instantiate(ingredientsPrefab, new Vector2(38f, 35f), Quaternion.identity);
 
         //}
 
     }
 
 
-
-    System.Collections.IEnumerator ResetGame()
+    private IEnumerator ResetGame()
     {
         yield return new WaitForSeconds(3f);
         currentIndex = 0;
@@ -126,6 +127,14 @@ public class MusicButtonManager : MonoBehaviour
         {
             gameCompleted = false; // Reset gameCompleted flag
         }
+    }
+
+    private IEnumerator handleGameCompleted(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        pianoKeys.SetActive(false);
+        popUpScript.ShowPopUp(popUpScript.successPopUpPanel);
+        SpawnIngredients();
     }
 
 }
