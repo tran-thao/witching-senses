@@ -7,6 +7,8 @@ public class PopUpScript : MonoBehaviour
     public GameObject successPopUpPanel; // Reference to the Message Pop-Up Panel GameObject
     public GameObject wrongNotePopUpPanel; // Reference to the Message Pop-Up Panel GameObject
     public GameObject GoToPianoPopUpPanel;
+    public GameObject introPanel;
+    public GameObject instructionsPanel;
 
 
     void Start()
@@ -16,6 +18,9 @@ public class PopUpScript : MonoBehaviour
         howToPopUpPanel.SetActive(false);
         successPopUpPanel.SetActive(false);
         wrongNotePopUpPanel.SetActive(false);
+        instructionsPanel.SetActive(false);
+        GoToPianoPopUpPanel.SetActive(false);
+        Time.timeScale = 0f; // Pause the game
 
     }
 
@@ -30,8 +35,32 @@ public class PopUpScript : MonoBehaviour
 
     public void ClosePopUp(GameObject panel)
     {
-        panel.SetActive(false); // Hide the Pop-Up Panel
-        Time.timeScale = 1f; // Resume the game
+        Debug.Log("close " + panel.name);
+        if (panel.name == "Intro")
+        {
+            Debug.Log("if intro");
+            CloseIntroPopUp();
+        }else if(panel.name == "Instructions")
+        {
+            instructionsPanel.SetActive(false);
+            ShowPopUp(GoToPianoPopUpPanel);
+            Time.timeScale = 1f; // Resume the game
+        }
+        else
+        {
+            Debug.Log("else");
+            panel.SetActive(false); // Hide the Pop-Up Panel
+            Time.timeScale = 1f; // Resume the game
+        }
+        
     }
+
+    private void CloseIntroPopUp()
+    {
+        introPanel.SetActive(false); // Hide the Pop-Up Panel
+        ShowPopUp(instructionsPanel);
+    }
+
+    
 }
 

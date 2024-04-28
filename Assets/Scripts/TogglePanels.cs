@@ -17,8 +17,11 @@ public class TogglePanels : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Return))
         {
             Debug.Log("return");
-            panel.SetActive(false);
-            Time.timeScale = 1f; // Resume the game
+            Debug.Log(panel.name);
+            PopUpScript popUpScript = GameObject.Find("Canvas").GetComponent<PopUpScript>();
+            popUpScript.ClosePopUp(panel);
+            //panel.SetActive(false);
+            //Time.timeScale = 1f; // Resume the game
         }
     }
 }
