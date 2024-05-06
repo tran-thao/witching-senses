@@ -26,8 +26,8 @@ public class MoMoveReverse : MonoBehaviour
 
     {
 
-        horizontal = Input.GetAxisRaw("Horizontal");
-        vertical = Input.GetAxisRaw("Vertical");
+        horizontal = -1*Input.GetAxisRaw("Horizontal");
+        vertical = -1*Input.GetAxisRaw("Vertical");
         myRigidbody2D.velocity= new Vector2(horizontal*speed, vertical*speed);
     }
 
