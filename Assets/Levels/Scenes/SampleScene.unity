@@ -29582,8 +29582,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "The first level will focus on hearing: remember the order of the music
-    notes and recreate the pattern by stepping on the piano keys. \n\nYou can move
-    using the following keyboard keys: "
+    notes and recreate the pattern by stepping on the piano keys. \nPress \"Enter\"
+    to continue.\nYou can move using the following keyboard keys: "
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8c38a0aea1e1b4b1db8e20b42099d45c, type: 2}
   m_sharedMaterial: {fileID: 9205972517442200143, guid: 8c38a0aea1e1b4b1db8e20b42099d45c, type: 2}
