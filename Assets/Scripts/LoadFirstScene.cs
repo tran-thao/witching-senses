@@ -7,6 +7,6 @@ public class LoadFirstScene : MonoBehaviour
 {
     public void LoadGameScene()
     {
-        SceneManager.LoadScene("SampleScene");  
+        SceneManager.LoadScene("Tutorial Level");  
     }
 }
