@@ -3419,10 +3419,10 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -4.667619}
+  m_Offset: {x: 0, y: -2.75}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -3433,7 +3433,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 9.881445, y: 3.8197715}
+  m_Size: {x: 11.13, y: 9.52}
   m_EdgeRadius: 0
 --- !u!50 &123247638
 Rigidbody2D:
@@ -16863,7 +16863,7 @@ GameObject:
   - component: {fileID: 512027399}
   m_Layer: 0
   m_Name: Key1
-  m_TagString: Key
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -16964,7 +16964,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -17007,6 +17007,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyType: 
   levelManagerTouch: {fileID: 1421307874}
+  uiManager: {fileID: 0}
 --- !u!1001 &512084153
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -40079,6 +40080,50 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8863895494598039943, guid: 6663055d92437674c850d216e1cc6dd2, type: 3}
   m_PrefabInstance: {fileID: 1279023615}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1280106837
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1280106839}
+  - component: {fileID: 1280106838}
+  m_Layer: 0
+  m_Name: UIManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1280106838
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1280106837}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b28cea4cc4efa3b4a8634b9f571d86fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1280106839
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1280106837}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -41.85542, y: -76.92687, z: -0.47662655}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1287275745
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -47800,7 +47845,7 @@ GameObject:
   - component: {fileID: 1553037326}
   m_Layer: 0
   m_Name: Key2
-  m_TagString: Key
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -47901,7 +47946,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -47944,6 +47989,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyType: 
   levelManagerTouch: {fileID: 1421307874}
+  uiManager: {fileID: 0}
 --- !u!1001 &1555219814
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -55234,7 +55280,7 @@ GameObject:
   - component: {fileID: 1788986758}
   m_Layer: 0
   m_Name: Key3
-  m_TagString: Key
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -55335,7 +55381,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -55378,6 +55424,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyType: 
   levelManagerTouch: {fileID: 1421307874}
+  uiManager: {fileID: 0}
 --- !u!1001 &1793788567
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -65941,3 +65988,4 @@ SceneRoots:
   - {fileID: 62354377}
   - {fileID: 476032181}
   - {fileID: 1421307873}
+  - {fileID: 1280106839}
