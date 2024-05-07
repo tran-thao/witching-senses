@@ -5,7 +5,7 @@ using TMPro;
 public class TimerScript : MonoBehaviour
 {
     public TMP_Text timerText; // Reference to the Text UI element
-    private float timeRemaining = 180f; // 3 minutes in seconds
+    private float timeRemaining = 240f; // 3 minutes in seconds
     public GameManager gameManager; // Reference to the GameManager script
 
     void Update()

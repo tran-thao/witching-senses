@@ -16859,9 +16859,11 @@ GameObject:
   - component: {fileID: 512027396}
   - component: {fileID: 512027395}
   - component: {fileID: 512027397}
+  - component: {fileID: 512027398}
+  - component: {fileID: 512027399}
   m_Layer: 0
   m_Name: Key1
-  m_TagString: Untagged
+  m_TagString: Key
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -16906,7 +16908,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: b28d46ed15005834da00625a4f2f65cc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -16978,6 +16980,33 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.16, y: 0.35}
   m_EdgeRadius: 0
+--- !u!114 &512027398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 512027394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be4cd9f4e2041ae43acad57f0d84934e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  keyType: Vibration
+--- !u!114 &512027399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 512027394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 435e8d377decdc34b9b2335b0f005818, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  keyType: 
+  levelManagerTouch: {fileID: 1421307874}
 --- !u!1001 &512084153
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -32005,7 +32034,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 35897c4bb39e2e74d919227cc5bbabb8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -40609,7 +40638,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 35897c4bb39e2e74d919227cc5bbabb8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -42445,7 +42474,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 35897c4bb39e2e74d919227cc5bbabb8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -44377,6 +44406,53 @@ Transform:
   m_Children: []
   m_Father: {fileID: 987267664}
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+--- !u!1 &1421307872
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1421307873}
+  - component: {fileID: 1421307874}
+  m_Layer: 0
+  m_Name: LevelManagerTouch
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1421307873
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1421307872}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -41.973526, y: -76.24173, z: -0.5166991}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1421307874
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1421307872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18cbe14566ab444184075c1530c858b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ingredients: []
+  gameOverPanel: {fileID: 30851019}
+  successPanel: {fileID: 1223578129}
 --- !u!1001 &1422296277
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -47720,9 +47796,11 @@ GameObject:
   - component: {fileID: 1553037323}
   - component: {fileID: 1553037322}
   - component: {fileID: 1553037324}
+  - component: {fileID: 1553037325}
+  - component: {fileID: 1553037326}
   m_Layer: 0
   m_Name: Key2
-  m_TagString: Untagged
+  m_TagString: Key
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -47767,7 +47845,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: b28d46ed15005834da00625a4f2f65cc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -47839,6 +47917,33 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.16, y: 0.35}
   m_EdgeRadius: 0
+--- !u!114 &1553037325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1553037321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be4cd9f4e2041ae43acad57f0d84934e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  keyType: Hot
+--- !u!114 &1553037326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1553037321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 435e8d377decdc34b9b2335b0f005818, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  keyType: 
+  levelManagerTouch: {fileID: 1421307874}
 --- !u!1001 &1555219814
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -52510,61 +52615,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8863895494598039943, guid: 6663055d92437674c850d216e1cc6dd2, type: 3}
   m_PrefabInstance: {fileID: 1711645406}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1712413959
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1712413961}
-  - component: {fileID: 1712413960}
-  m_Layer: 0
-  m_Name: MusicButtonManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1712413960
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1712413959}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 366edb17b8c514c2b88b256bad0528b8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  musicButtons:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  popUpScript: {fileID: 0}
-  ingredientsPrefab: {fileID: 7102824198414280480, guid: a8a5ad656decb4c6588d83fa200b7fcf, type: 3}
-  gameCompleted: 0
-  pianoKeys: {fileID: 0}
-  princess: {fileID: 123247633}
---- !u!4 &1712413961
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1712413959}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 40.3, y: 22.3, z: -0.1995867}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1713534351
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -55180,9 +55230,11 @@ GameObject:
   - component: {fileID: 1788986755}
   - component: {fileID: 1788986754}
   - component: {fileID: 1788986756}
+  - component: {fileID: 1788986757}
+  - component: {fileID: 1788986758}
   m_Layer: 0
   m_Name: Key3
-  m_TagString: Untagged
+  m_TagString: Key
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -55227,7 +55279,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: b28d46ed15005834da00625a4f2f65cc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -55299,6 +55351,33 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.16, y: 0.35}
   m_EdgeRadius: 0
+--- !u!114 &1788986757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1788986753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be4cd9f4e2041ae43acad57f0d84934e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  keyType: Cold
+--- !u!114 &1788986758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1788986753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 435e8d377decdc34b9b2335b0f005818, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  keyType: 
+  levelManagerTouch: {fileID: 1421307874}
 --- !u!1001 &1793788567
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -65854,7 +65933,6 @@ SceneRoots:
   - {fileID: 704276236}
   - {fileID: 262898073}
   - {fileID: 1436493782}
-  - {fileID: 1712413961}
   - {fileID: 1110111563}
   - {fileID: 1231727551}
   - {fileID: 2099012375}
@@ -65862,3 +65940,4 @@ SceneRoots:
   - {fileID: 100768501}
   - {fileID: 62354377}
   - {fileID: 476032181}
+  - {fileID: 1421307873}
