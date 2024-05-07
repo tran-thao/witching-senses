@@ -6,7 +6,6 @@ using UnityEngine;
     public class ChestScript : MonoBehaviour
     {
         public string chestType;  // Type of chest (hot, cold, vibration)
-        public GameObject keyObject;  // Reference to the key GameObject
         private bool canBeOpened = true;  // Flag to allow chest opening
         public LevelManagerTouch levelManagerTouch;  // Reference to the LevelManager script
         
@@ -20,8 +19,9 @@ using UnityEngine;
         {
             if (canBeOpened && other.CompareTag("Player"))
             {
-                // Check if the player is holding a key
-                if (levelManagerTouch.IsKeyHeld())
+            
+            // Check if the player is holding a key
+            if (levelManagerTouch.IsKeyHeld())
                 {
                     // Check if the key's sensation matches the chest's sensation
                     string heldKeyType = levelManagerTouch.GetHeldKeyType();  // Get the type of held key
@@ -37,8 +37,9 @@ using UnityEngine;
                         ResetKeyHeld();  // Reset keyHeld status to false
 
                     // Show feedback for wrong chest attempt
-                    ResetKey();  // Reset key to initial position
-                    }
+
+                    
+                }
                 }
             }
         }
@@ -51,19 +52,11 @@ using UnityEngine;
        
         }
 
- 
-
-    void ResetKey()
-        {
-            // Reset the key to its initial position
-           // keyObject.transform.position = keyObject.GetComponent<KeyScript>().initialPosition;
-            
-           
-        }
-
     public void ResetKeyHeld()
     {
         levelManagerTouch.SetKeyHeld(false);  // Reset keyHeld status to false
     }
+
+
 }
 

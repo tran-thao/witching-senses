@@ -9,13 +9,18 @@ public class KeyScript : MonoBehaviour
     public LevelManagerTouch levelManagerTouch;  // Reference to the LevelManager script
     private bool touchedByPlayer = false; //check the collision
     private bool canBePickedUp = true;  // Flag to allow key pickup
+    private Vector3 initialPosition;  // Initial position of the key
     
+
 
 
     // Start is called before the first frame update
     void Start()
     {
         levelManagerTouch = GameObject.Find("LevelManagerTouch").GetComponent<LevelManagerTouch>();
+        initialPosition = transform.position;  // Store initial position
+        Debug.Log(initialPosition);
+
         KeyInfo keyInfo = GetComponent<KeyInfo>();
         if (keyInfo != null)
         {
@@ -70,6 +75,7 @@ public class KeyScript : MonoBehaviour
         if (touchedByPlayer && Input.GetKeyDown(KeyCode.Space))
         {
             CollectKey();
+            
         }
     }
 
@@ -94,4 +100,7 @@ public class KeyScript : MonoBehaviour
             }
         }
     }
+
+    
+
 }
