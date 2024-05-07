@@ -10,7 +10,11 @@ public class LevelManagerTouch : MonoBehaviour
     public GameObject successPanel; // Reference to the success panel
     private bool gameOver = false; // Track game over state
     private bool[] collectedKeys = new bool[3]; //Store collected keys
-
+    private bool keyHeld = false; //Store Key held value
+    private string heldKeyType;  // Store the type of held key
+    public int totalChests;  // Total number of chests in the level
+    private int openedChests = 0;  // Number of opened chests
+    private bool levelCompleted = false;  // Flag to track level completion
 
     private void Start()
     {
@@ -35,6 +39,56 @@ public class LevelManagerTouch : MonoBehaviour
         }
     }
 
+    public bool IsKeyHeld() //Checking if key is collected
+    {
+        return keyHeld;
+    }
+
+    public void SetKeyHeld(bool held) //setting key held status
+    {
+        keyHeld = held;
+    }
+
+    // Method to set the held key type
+    public void SetHeldKeyType(string keyType)
+    {
+        heldKeyType = keyType;
+    }
+
+    // Method to get the held key type
+    public string GetHeldKeyType()
+    {
+        return heldKeyType;
+    }
+
+    public void KeyCollected(string keyType)
+    {
+        switch (keyType)
+        {
+            case "Vibration":
+                collectedKeys[0] = true;
+                break;
+            case "Hot":
+                collectedKeys[1] = true;
+                break;
+            case "Cold":
+                collectedKeys[2] = true;
+                break;
+            default:
+                break;
+        }
+
+    }
+
+   public void ChestOpened()
+    {
+        openedChests++;
+        if (openedChests >= totalChests && !levelCompleted)
+        {
+            levelCompleted = true;
+            Debug.Log("Level Complete! All chests opened.");
+        }
+    }
     public void TimerZero()
     {
 
@@ -66,30 +120,14 @@ public class LevelManagerTouch : MonoBehaviour
         
     }
 
+
     private void LoadMainMenu()
     {
         // Load the Main menu scene by name 
         SceneManager.LoadScene("MainMenu");
     }
 
-    public void KeyCollected(string keyType)
-    {
-        switch (keyType)
-        {
-            case "Vibration":
-                collectedKeys[0] = true;
-                break;
-            case "Hot":
-                collectedKeys[1] = true;
-                break;
-            case "Cold":
-                collectedKeys[2] = true;
-                break;
-            default:
-                break;
-        }
-        
-    }
+   
 
 }
 

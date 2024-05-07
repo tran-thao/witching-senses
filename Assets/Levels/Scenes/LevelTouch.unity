@@ -15788,63 +15788,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8863895494598039943, guid: 6663055d92437674c850d216e1cc6dd2, type: 3}
   m_PrefabInstance: {fileID: 475030178}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &476032181
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 2951592204737241101, guid: b8e70bcb01db575499f24524ac6645d9, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 9.16
-      objectReference: {fileID: 0}
-    - target: {fileID: 2951592204737241101, guid: b8e70bcb01db575499f24524ac6645d9, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -36.49
-      objectReference: {fileID: 0}
-    - target: {fileID: 2951592204737241101, guid: b8e70bcb01db575499f24524ac6645d9, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0.2996418
-      objectReference: {fileID: 0}
-    - target: {fileID: 2951592204737241101, guid: b8e70bcb01db575499f24524ac6645d9, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2951592204737241101, guid: b8e70bcb01db575499f24524ac6645d9, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2951592204737241101, guid: b8e70bcb01db575499f24524ac6645d9, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2951592204737241101, guid: b8e70bcb01db575499f24524ac6645d9, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2951592204737241101, guid: b8e70bcb01db575499f24524ac6645d9, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2951592204737241101, guid: b8e70bcb01db575499f24524ac6645d9, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 180
-      objectReference: {fileID: 0}
-    - target: {fileID: 2951592204737241101, guid: b8e70bcb01db575499f24524ac6645d9, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5727247020123234187, guid: b8e70bcb01db575499f24524ac6645d9, type: 3}
-      propertyPath: m_Name
-      value: liedown (64)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: b8e70bcb01db575499f24524ac6645d9, type: 3}
 --- !u!1001 &480982622
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17007,7 +16950,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyType: 
   levelManagerTouch: {fileID: 1421307874}
-  uiManager: {fileID: 0}
 --- !u!1001 &512084153
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -31988,6 +31930,7 @@ GameObject:
   - component: {fileID: 968297857}
   - component: {fileID: 968297856}
   - component: {fileID: 968297858}
+  - component: {fileID: 968297859}
   m_Layer: 0
   m_Name: Chest2
   m_TagString: Untagged
@@ -32107,6 +32050,22 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.6, y: 1.0666667}
   m_EdgeRadius: 0
+--- !u!114 &968297859
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 968297855}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de8a204915993e7409052035a43080f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chestType: Hot
+  keyObject: {fileID: 0}
+  levelManagerTouch: {fileID: 0}
+  totalChests: 0
 --- !u!1001 &976698053
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -40080,50 +40039,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8863895494598039943, guid: 6663055d92437674c850d216e1cc6dd2, type: 3}
   m_PrefabInstance: {fileID: 1279023615}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1280106837
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1280106839}
-  - component: {fileID: 1280106838}
-  m_Layer: 0
-  m_Name: UIManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1280106838
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1280106837}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b28cea4cc4efa3b4a8634b9f571d86fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &1280106839
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1280106837}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -41.85542, y: -76.92687, z: -0.47662655}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1287275745
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -40636,6 +40551,7 @@ GameObject:
   - component: {fileID: 1299676576}
   - component: {fileID: 1299676575}
   - component: {fileID: 1299676577}
+  - component: {fileID: 1299676578}
   m_Layer: 0
   m_Name: Chest1
   m_TagString: Untagged
@@ -40755,6 +40671,22 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.6, y: 1.0666667}
   m_EdgeRadius: 0
+--- !u!114 &1299676578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1299676574}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de8a204915993e7409052035a43080f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chestType: Vibration
+  keyObject: {fileID: 0}
+  levelManagerTouch: {fileID: 0}
+  totalChests: 0
 --- !u!1001 &1299987319
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -42472,6 +42404,7 @@ GameObject:
   - component: {fileID: 1355827684}
   - component: {fileID: 1355827683}
   - component: {fileID: 1355827685}
+  - component: {fileID: 1355827686}
   m_Layer: 0
   m_Name: Chest3
   m_TagString: Untagged
@@ -42591,6 +42524,22 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.6, y: 1.0666667}
   m_EdgeRadius: 0
+--- !u!114 &1355827686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1355827682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de8a204915993e7409052035a43080f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chestType: Cold
+  keyObject: {fileID: 0}
+  levelManagerTouch: {fileID: 0}
+  totalChests: 0
 --- !u!1001 &1358321484
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -44498,6 +44447,7 @@ MonoBehaviour:
   ingredients: []
   gameOverPanel: {fileID: 30851019}
   successPanel: {fileID: 1223578129}
+  totalChests: 3
 --- !u!1001 &1422296277
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -47989,7 +47939,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyType: 
   levelManagerTouch: {fileID: 1421307874}
-  uiManager: {fileID: 0}
 --- !u!1001 &1555219814
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -55424,7 +55373,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyType: 
   levelManagerTouch: {fileID: 1421307874}
-  uiManager: {fileID: 0}
 --- !u!1001 &1793788567
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -65986,6 +65934,4 @@ SceneRoots:
   - {fileID: 1833725630}
   - {fileID: 100768501}
   - {fileID: 62354377}
-  - {fileID: 476032181}
   - {fileID: 1421307873}
-  - {fileID: 1280106839}
