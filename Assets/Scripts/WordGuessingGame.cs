@@ -1,23 +1,23 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class WordGuessingGame : MonoBehaviour
 {
-    public Text anagramText;
-    public InputField userInputField;
-    public Text resultText;
+    public TMP_Text anagramText;
+    public TMP_InputField userInputField;
+    public TMP_Text resultText;
 
     private List<string> words = new List<string>()
     {
         "spiderweb dewdrops",
         "rainbow beam",
-        "orange",
-        "grape",
-        "melon",
-        "strawberry",
-        // Add more words as needed
+        "butterflywing pattern",
+        "last sunray",
+        "moonflower petal",
     };
 
     private string currentWord;
@@ -27,26 +27,43 @@ public class WordGuessingGame : MonoBehaviour
     {
         ChooseRandomWord();
         UpdateAnagramText();
-        userInputField.onEndEdit.AddListener(delegate { CheckAnswer(); }); // Listen for user pressing Enter
+        userInputField.onEndEdit.AddListener(delegate { CheckAnswer(); });
     }
 
     void ChooseRandomWord()
     {
-        currentWord = words[Random.Range(0, words.Count)];
-        currentAnagram = ShuffleWord(currentWord);
+        currentWord = words[UnityEngine.Random.Range(0, words.Count)];
+        currentAnagram = GetAnagram(currentWord);
     }
 
-    string ShuffleWord(string word)
+    string GetAnagram(string word)
     {
-        char[] chars = word.ToCharArray();
-        for (int i = 0; i < chars.Length; i++)
+        string[] wordArray = word.Split(' ');
+        List<string> shuffledWords = new List<string>();
+
+        foreach (string w in wordArray)
         {
-            char temp = chars[i];
-            int randomIndex = Random.Range(i, chars.Length);
-            chars[i] = chars[randomIndex];
-            chars[randomIndex] = temp;
+            char[] chars = w.ToCharArray();
+            List<char> letters = new List<char>(chars);
+
+            ShuffleList(letters);
+            shuffledWords.Add(new string(letters.ToArray()));
         }
-        return new string(chars);
+
+        return string.Join(" ", shuffledWords);
+    }
+
+    void ShuffleList<T>(List<T> list)
+    {
+        int n = list.Count;
+        while (n > 1)
+        {
+            n--;
+            int k = UnityEngine.Random.Range(0, n + 1);
+            T value = list[k];
+            list[k] = list[n];
+            list[n] = value;
+        }
     }
 
     void UpdateAnagramText()
@@ -57,7 +74,7 @@ public class WordGuessingGame : MonoBehaviour
     public void CheckAnswer(string input = null)
     {
         string userAnswer = (input != null) ? input.ToLower() : userInputField.text.ToLower();
-        if (userAnswer == currentWord)
+        if (userAnswer == currentWord.Replace(" ", ""))
         {
             resultText.text = "Correct!";
         }
