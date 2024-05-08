@@ -74,7 +74,21 @@ public class WordGuessingGame : MonoBehaviour
     public void CheckAnswer(string input = null)
     {
         string userAnswer = (input != null) ? input.ToLower() : userInputField.text.ToLower();
-        if (userAnswer == currentWord.Replace(" ", ""))
+        string[] correctAnswerWords = currentWord.Split(' ');
+
+        bool isCorrect = true;
+
+        // Check each word in the correct answer
+        foreach (string word in correctAnswerWords)
+        {
+            if (!userAnswer.Contains(word))
+            {
+                isCorrect = false;
+                break;
+            }
+        }
+
+        if (isCorrect)
         {
             resultText.text = "Correct!";
         }
@@ -83,4 +97,5 @@ public class WordGuessingGame : MonoBehaviour
             resultText.text = "Incorrect! Try again.";
         }
     }
+
 }
