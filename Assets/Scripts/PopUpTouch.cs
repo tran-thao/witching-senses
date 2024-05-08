@@ -6,9 +6,8 @@ public class PopUpTouch : MonoBehaviour
     public GameObject howToPopUpPanel; // Reference to the Welcome Pop-Up Panel GameObject
     public GameObject successPopUpPanel; // Reference to the Message Pop-Up Panel GameObject
     public GameObject wrongNotePopUpPanel; // Reference to the Message Pop-Up Panel GameObject
-   // public GameObject GoToPianoPopUpPanel;
-    public GameObject introPanel;
     public GameObject instructionsPanel;
+    public GameObject introPanel;
 
 
     void Start()
@@ -19,7 +18,6 @@ public class PopUpTouch : MonoBehaviour
         successPopUpPanel.SetActive(false);
         wrongNotePopUpPanel.SetActive(false);
         instructionsPanel.SetActive(false);
-        //GoToPianoPopUpPanel.SetActive(false);
         Time.timeScale = 0f; // Pause the game
 
     }

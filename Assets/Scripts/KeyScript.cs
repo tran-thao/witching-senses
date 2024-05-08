@@ -6,13 +6,21 @@ public class KeyScript : MonoBehaviour
 {
    
     public string keyType;  // To identify the key type (vibration, cold, hot)
-    public LevelManagerTouch levelManagerTouch;  // Reference to the GameManager script
-    private bool touchedByPlayer = false;
+    public LevelManagerTouch levelManagerTouch;  // Reference to the LevelManager script
+    private bool touchedByPlayer = false; //check the collision
+    private bool canBePickedUp = true;  // Flag to allow key pickup
+    private Vector3 initialPosition;  // Initial position of the key
+    
+
+
 
     // Start is called before the first frame update
     void Start()
     {
         levelManagerTouch = GameObject.Find("LevelManagerTouch").GetComponent<LevelManagerTouch>();
+        initialPosition = transform.position;  // Store initial position
+        Debug.Log(initialPosition);
+
         KeyInfo keyInfo = GetComponent<KeyInfo>();
         if (keyInfo != null)
         {
@@ -23,30 +31,33 @@ public class KeyScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Player"))
+        if (canBePickedUp && other.CompareTag("Player"))
         {
 
             Debug.Log("Player triggered key: " + keyType);
             touchedByPlayer = true;
 
-            
-            // Play corresponding sensation (vibration, hot, cold)
-            switch (keyType)
+            // Check if the player is not already holding a key
+            if (!levelManagerTouch.IsKeyHeld())
             {
-                case "Vibration":
-                    // Play vibration effect
-                    Debug.Log("Vibration key");
-                    break;
-                case "Hot":
-                    // Play hot effect
-                    Debug.Log("Hot key");
-                    break;
-                case "Cold":
-                    // Play cold effect
-                    Debug.Log("Cold key");
-                    break;
-                default:
-                    break;
+                // Play corresponding sensation (vibration, hot, cold)
+                switch (keyType)
+                {
+                    case "Vibration":
+                        // Play vibration effect
+                        Debug.Log("Vibration key");
+                        break;
+                    case "Hot":
+                        // Play hot effect
+                        Debug.Log("Hot key");
+                        break;
+                    case "Cold":
+                        // Play cold effect
+                        Debug.Log("Cold key");
+                        break;
+                    default:
+                        break;
+                }
             }
         }
     }
@@ -64,18 +75,32 @@ public class KeyScript : MonoBehaviour
         if (touchedByPlayer && Input.GetKeyDown(KeyCode.Space))
         {
             CollectKey();
+            
         }
     }
 
     void CollectKey()
     {
-       
-        // Notify GameManager about the key collection
+        Debug.Log(levelManagerTouch.IsKeyHeld());
         if (levelManagerTouch != null)
         {
-            levelManagerTouch.KeyCollected(keyType);  // Notify GameManager about the collected key
-        }
+            // Notify GameManager about the key collection
+            if (!levelManagerTouch.IsKeyHeld())
+            {
+                canBePickedUp = false;  // Prevent further pickups
 
-        Destroy(gameObject);  // Destroy the key object after collection
+                // Set the keyHeld status to true and store the held key type
+                levelManagerTouch.SetKeyHeld(true);// Set key held to true
+                levelManagerTouch.KeyCollected(keyType);// Notify LevelManager about the collected key
+                levelManagerTouch.SetHeldKeyType(keyType);// Set key Type 
+
+
+
+                Destroy(gameObject);  // Destroy the key object after collection
+            }
+        }
     }
+
+    
+
 }
