@@ -141,7 +141,7 @@ public class LevelManagerTouch : MonoBehaviour
     {
         if (levelCompleted)
         {
-            Invoke("LoadSuccess", 1f);
+            Invoke("LoadSuccess", 2f);
     
         }
     }
