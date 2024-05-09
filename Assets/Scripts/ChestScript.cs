@@ -29,7 +29,8 @@ using UnityEngine;
                     string heldKeyType = levelManagerTouch.GetHeldKeyType();  // Get the type of held key
                     if (heldKeyType == chestType)
                     {
-                        OpenChest();  // Open the chest
+                    Debug.Log("Enter chest open");
+                    OpenChest();  // Open the chest
                         
                         levelManagerTouch.ChestOpened();  // Notify LevelManager that a chest is opened
                        
@@ -44,10 +45,6 @@ using UnityEngine;
 
                     // Show feedback for wrong chest attempt
 
-                        
-
-                    
-
 
                 }
                 }
@@ -58,7 +55,7 @@ using UnityEngine;
         {
             
             Debug.Log("Chest opened! You found the right key.");
-            canBeOpened = true;  // Prevent further openings
+            canBeOpened = false;  // Prevent further openings
                                   // Play chest opening animation or effects
             ResetKeyHeld();  // Reset keyHeld status to false
     }

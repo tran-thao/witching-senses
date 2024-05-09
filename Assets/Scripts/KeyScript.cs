@@ -97,7 +97,6 @@ public class KeyScript : MonoBehaviour
 
                 // Set the keyHeld status to true and store the held key type
                 levelManagerTouch.SetKeyHeld(true);// Set key held to true
-                levelManagerTouch.KeyCollected(keyType);// Notify LevelManager about the collected key
                 levelManagerTouch.SetHeldKeyType(keyType);// Set key Type 
 
 

@@ -9,7 +9,6 @@ public class LevelManagerTouch : MonoBehaviour
     public GameObject gameOverPanel; // Reference to the game over panel
     public GameObject successPanel; // Reference to the success panel
     private bool gameOver = false; // Track game over state
-    private bool[] collectedKeys = new bool[3]; //Store collected keys
     private bool keyHeld = false; //Store Key held value
     private KeyScript collectedKey;  // Reference to the collected key
     private string heldKeyType;  // Store the type of held key
@@ -82,28 +81,12 @@ public class LevelManagerTouch : MonoBehaviour
         }
     }
 
-    public void KeyCollected(string keyType)
-    {
-        switch (keyType)
-        {
-            case "Vibration":
-                collectedKeys[0] = true;
-                break;
-            case "Hot":
-                collectedKeys[1] = true;
-                break;
-            case "Cold":
-                collectedKeys[2] = true;
-                break;
-            default:
-                break;
-        }
-
-    }
+   
 
    public void ChestOpened()
     {
         openedChests++;
+        Debug.Log("Chest opened! Total open chests: " + openedChests);
         if (openedChests >= totalChests && !levelCompleted)
         {
             levelCompleted = true;
