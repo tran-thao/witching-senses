@@ -5,10 +5,11 @@ public class SmellGameManager : MonoBehaviour
 {
     public GameObject smellIngredient;
     public GameObject smellSprite;
-    public float spawnRadius = 10f;
+    public float spawnRadius = 30f;
     public int numberOfPrefabs = 6;
     public bool gameStarted;
-    public GameObject referenceSmell;
+    public SpriteRenderer referenceSmellSprite;
+    public SpriteRenderer mySmellSprite;
 
     public Color[] referenceColors = { Color.green, new Color(0.5f, 0, 0.5f), new Color(1, 0.5f, 0) }; // green, purple, orange
     public Color[] ingredientColors = { Color.blue, Color.red, Color.yellow };
@@ -16,8 +17,15 @@ public class SmellGameManager : MonoBehaviour
     void Start()
     {
         gameStarted = false;
-        referenceSmell = GameObject.Find("referenceSmell");
+        referenceSmellSprite = GameObject.Find("referenceSmell").GetComponent<SpriteRenderer>();
+        mySmellSprite = GameObject.Find("mySmell").GetComponent<SpriteRenderer>();
+
         //SpawnPrefabs();
+    }
+
+    private void Update()
+    {
+
     }
 
     public void startSmellGame()
@@ -27,48 +35,54 @@ public class SmellGameManager : MonoBehaviour
        
     }
 
-     void SpawnPrefabs()
+    void SpawnPrefabs()
     {
         List<Vector3> spawnPoints = new List<Vector3>();
         int spawnedCount = 0;
 
+        // Define exclusion zones (empty GameObjects)
+        GameObject exclusionZone1 = GameObject.Find("referenceCauldron");
+        GameObject exclusionZone2 = GameObject.Find("myCauldron");
+
         while (spawnedCount < numberOfPrefabs)
         {
-            Vector3 spawnPoint = new Vector3(Random.Range(-58f, 58f), Random.Range(-22f, 35f), -2f);
+            Vector3 spawnPoint = Vector3.zero;
 
             bool validSpawnPoint = true;
-            foreach (Vector3 existingSpawnPoint in spawnPoints)
+
+            do
             {
-                if (Vector3.Distance(spawnPoint, existingSpawnPoint) < spawnRadius)
+                // Generate a random spawn point
+                spawnPoint = new Vector3(Random.Range(-58f, 58f), Random.Range(-22f, 35f), -2f);
+
+                // Check if the spawn point falls within any exclusion zone
+                if (Vector3.Distance(spawnPoint, exclusionZone1.transform.position) < spawnRadius ||
+                    Vector3.Distance(spawnPoint, exclusionZone2.transform.position) < spawnRadius)
                 {
-                    validSpawnPoint = false;
-                    break;
+                    validSpawnPoint = false; // Spawn point is within an exclusion zone, not valid
                 }
-            }
+                else
+                {
+                    validSpawnPoint = true; // Spawn point is outside all exclusion zones, valid
+                }
 
-            if (validSpawnPoint)
-            {
-                GameObject ingred = Instantiate(smellIngredient, spawnPoint, Quaternion.identity);
-               //Debug.Log("ingred pos: " + ingred.transform.position);
-                GameObject ingredSmell = Instantiate(smellSprite, ingred.transform);
-                //Debug.Log("ingredSmell local pos: " + ingredSmell.transform.localPosition);
+            } while (!validSpawnPoint); // Repeat until a valid spawn point is found
 
-                // Set the initial local position of ingredSmell relative to ingred
-                ingredSmell.transform.localPosition = new Vector3(0f, 0.5f, 0f); // Adjust the offset as needed
-
-                //Debug.Log("ingredSmell local pos: " + ingredSmell.transform.localPosition);
-                ingredSmell.GetComponent<SpriteRenderer>().color = generateIngredientColor();
-                spawnedCount++;
-                spawnPoints.Add(spawnPoint);
-            }
+            // Instantiate prefab at the valid spawn point
+            GameObject ingred = Instantiate(smellIngredient, spawnPoint, Quaternion.identity);
+            GameObject ingredSmell = Instantiate(smellSprite, ingred.transform);
+            ingredSmell.transform.localPosition = new Vector3(0f, 0.5f, 0f); // Adjust the offset as needed
+            ingredSmell.GetComponent<SpriteRenderer>().color = generateIngredientColor();
+            spawnedCount++;
         }
     }
+
 
     void generateReferenceSmell()
     {
         int randomIndex = Random.Range(0, referenceColors.Length);
         Color randomColor = referenceColors[randomIndex];
-        referenceSmell.GetComponent<SpriteRenderer>().color = randomColor;
+        referenceSmellSprite.color = randomColor;
         //Debug.Log("Random color: " + randomColor);
     }
 

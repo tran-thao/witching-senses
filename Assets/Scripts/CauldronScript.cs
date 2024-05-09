@@ -4,75 +4,73 @@ using System.Collections.Generic;
 public class CauldronScript : MonoBehaviour
 {
     private SmellGameManager gameManagerScript;
-    Color myColor;
-    Color referenceColor;
+    SpriteRenderer mySmellSprite;
+    SpriteRenderer referenceColor;
 
 
     void Start()
     {
         gameManagerScript = GameObject.Find("smellGameManager").GetComponent<SmellGameManager>();
-        referenceColor = gameManagerScript.referenceSmell.GetComponent<SpriteRenderer>().color;
-        myColor = GameObject.Find("mySmell").GetComponent<SpriteRenderer>().color;
+        
+        mySmellSprite = GameObject.Find("mySmell").GetComponent<SpriteRenderer>();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        //Debug.Log(collision.gameObject.name);
         if (collision.gameObject.tag == "Player")
         {
-            Debug.Log("player collide");
             if (!gameManagerScript.gameStarted)
             {
                 gameManagerScript.startSmellGame();
                 gameManagerScript.gameStarted = true;
             }
-           
-            
-        }
-
-        if (collision.gameObject.tag == "smellIngredient")
-        {
-            Debug.Log("ingredient collide");
-            Color smellIngredientColor = collision.gameObject.GetComponentInChildren<SpriteRenderer>().color;
-            Debug.Log("smell color: " + smellIngredientColor);
-
-            if (!gameManagerScript.gameStarted)
+            else
             {
-
-                //-Switch cases:
-                //-Red + red = red
-                //- Blue + blue = blue
-                //- Yellow + yellow = yellow
-
-                //- Red + blue = violet
-                //- Blue + yellow = green
-                //- Red + yellow = orange
-
-                //if cauldron color is white, red,blue,yellow then just replace
-                //else if color is purple, green,orange, then mix according to cauldron color
-
-                //if ingred color is red, either replace if cauldron color is red/green/purple/orange or mix if cauldron color is blue or yellow,
-                //if ingred color s yellow, either replace if cauldron color is yellow/green/purple/orange or mix if cauldron color is red or blue
-                //if ingred color is blue either replace if cauldron color is blue/green/purple/orange or mix if cauldron color is red or yellow
-
-
-                if (smellIngredientColor == Color.red)
+                if (collision.gameObject.transform.childCount > 0)
                 {
-                    if (checkToReplace(smellIngredientColor))
+                    //Debug.Log("ingredient collide");
+                    Color smellIngredientColor = collision.gameObject.transform.GetChild(0).transform.GetChild(0).GetComponent<SpriteRenderer>().color;
+                    //Debug.Log("color : " + collision.gameObject.transform.GetChild(0).transform.GetChild(0).GetComponent<SpriteRenderer>().color);
+                    //Debug.Log("smell color: " + smellIngredientColor);
+
+                    if (gameManagerScript.gameStarted)
                     {
-                        myColor = smellIngredientColor;
-                    }
-                    else
-                    {
-                        mixColor(smellIngredientColor);
+                        if (checkToReplace(smellIngredientColor))
+                        {
+                            //Debug.Log("replace");
+                            mySmellSprite.color = smellIngredientColor;
+
+                        } else {
+                            //Debug.Log("mix");
+                            mySmellSprite.color = mixColor(smellIngredientColor);
+
+                            if (checkCorrectColor(mySmellSprite.color))
+                            {
+                                Debug.Log("Success");
+                            } else
+                            {
+                                Debug.Log("Wrong Color");
+                                mySmellSprite.color = Color.white;
+                            }
+                        }
+                        DestroyObject(collision.gameObject);
+
+
+
+
+                    } else {
+                        //Debug.Log("This GameObject does not have any child objects.");
                     }
                 }
             }
         }
     }
 
+
     bool checkToReplace(Color color)
     {
-        if(myColor == Color.white || myColor == color || myColor == Color.green || myColor == new Color(0.5f, 0, 0.5f) || myColor ==  new Color(1, 0.5f, 0))
+        if(mySmellSprite.color == Color.white || mySmellSprite.color == color || mySmellSprite.color == Color.green || mySmellSprite.color == new Color(0.5f, 0, 0.5f) || mySmellSprite.color ==  new Color(1, 0.5f, 0))
         {
             return true;
         }
@@ -85,13 +83,13 @@ public class CauldronScript : MonoBehaviour
     Color mixColor(Color color)
     {
 
-        Debug.Log("mixColor");
+        //Debug.Log("mixColor");
         if(color == Color.yellow)
         {
-            if(myColor == Color.blue)
+            if(mySmellSprite.color == Color.blue)
             {
                 return Color.green;
-            } else if (myColor == Color.red)
+            } else if (mySmellSprite.color == Color.red)
             {
                 return new Color(1, 0.5f, 0); //orange
             }
@@ -99,11 +97,11 @@ public class CauldronScript : MonoBehaviour
         }
         else if (color == Color.blue)
         {
-            if (myColor == Color.yellow)
+            if (mySmellSprite.color == Color.yellow)
             {
                 return Color.green;
             }
-            else if (myColor == Color.red)
+            else if (mySmellSprite.color == Color.red)
             {
                 return new Color(0.5f, 0, 0.5f); //purple
             }
@@ -111,11 +109,11 @@ public class CauldronScript : MonoBehaviour
         }
         else if (color == Color.red)
         {
-            if (myColor == Color.yellow)
+            if (mySmellSprite.color == Color.yellow)
             {
                 return new Color(1, 0.5f, 0); //orange
             }
-            else if (myColor == Color.blue)
+            else if (mySmellSprite.color == Color.blue)
             {
                 return new Color(0.5f, 0, 0.5f); //purple
             }
@@ -123,4 +121,28 @@ public class CauldronScript : MonoBehaviour
 
         return color;
     }
+
+    private bool checkCorrectColor(Color color)
+    {
+        //Debug.Log("color mixed: " + color);
+        //Debug.Log("ref color: " + referenceColor);
+        if(color == gameManagerScript.referenceSmellSprite.color)
+        {
+            return true;
+        } else
+        {
+            return false;
+        }
+    }
+
+    private void DestroyObject(GameObject gameObject)
+    {
+        // compare children of game object
+        for (var i = gameObject.transform.childCount - 1; i >= 0; i--)
+        {
+            Destroy(gameObject.transform.GetChild(i).gameObject);
+        }
+    }
 }
+
+

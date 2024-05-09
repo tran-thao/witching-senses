@@ -41,14 +41,16 @@ public class PickUpIngredient : MonoBehaviour
         {
             // Check for any nearby pickup objects
             Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, 2f);
+            Debug.Log(colliders);
             foreach (Collider2D collider in colliders)
             {
-                if (collider.CompareTag(pickupTag))
-                {
+                if (collider.CompareTag(pickupTag)) {
+           
                     carriedIngredient = collider.gameObject;
                     carriedIngredient.transform.parent = transform; // Attach the ingredient to the player
                     carriedIngredient.transform.localPosition = new Vector3(0f,0f, -2f); // Set position relative to the player
-                    carriedIngredient.GetComponent<BoxCollider2D>().isTrigger = false;
+                    //carriedIngredient.GetComponent<BoxCollider2D>().isTrigger = false;
+                    //Debug.Log("trigger: " + carriedIngredient.GetComponent<BoxCollider2D>().isTrigger);
                     break;
                 }
             }
@@ -61,7 +63,8 @@ public class PickUpIngredient : MonoBehaviour
         {
             carriedIngredient.transform.parent = null; // Unparent the ingredient from the player
             carriedIngredient = null;
-            carriedIngredient.GetComponent<BoxCollider2D>().isTrigger = true;
+            //carriedIngredient.GetComponent<BoxCollider2D>().isTrigger = true;
         }
     }
 }
+
