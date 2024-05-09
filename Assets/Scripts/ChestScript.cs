@@ -30,20 +30,23 @@ using UnityEngine;
                     if (heldKeyType == chestType)
                     {
                         OpenChest();  // Open the chest
+                        
                         levelManagerTouch.ChestOpened();  // Notify LevelManager that a chest is opened
-                        ResetKeyHeld();  // Reset keyHeld status to false
+                       
                 }
                     else
                     {
                         Debug.Log("Wrong chest! Try another key.");
-                        ResetKeyHeld();  // Reset keyHeld status to false
+                    Debug.Log("Wrong chest! Key reset.");
+                    levelManagerTouch.ResetCollectedKey();
+                    ResetKeyHeld();  // Reset keyHeld status to false
                                          //keyScript.ResetToInitialPosition();  // Reset the key to initial position
 
                     // Show feedback for wrong chest attempt
 
-                        Debug.Log("Wrong chest! Key reset.");
+                        
 
-                    levelManagerTouch.ResetCollectedKey();
+                    
 
 
                 }
@@ -55,9 +58,9 @@ using UnityEngine;
         {
             
             Debug.Log("Chest opened! You found the right key.");
-            canBeOpened = false;  // Prevent further openings
-                             // Play chest opening animation or effects
-
+            canBeOpened = true;  // Prevent further openings
+                                  // Play chest opening animation or effects
+            ResetKeyHeld();  // Reset keyHeld status to false
     }
 
     public void ResetKeyHeld()

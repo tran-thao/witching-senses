@@ -125,7 +125,8 @@ public class KeyScript : MonoBehaviour
         GetComponent<Collider2D>().enabled = true;
         // Reset key to initial position
         // transform.position = initialPosition;
-        levelManagerTouch.SetKeyHeld(true); // Reset keyHeld status
+        //levelManagerTouch.SetKeyHeld(true); // Reset keyHeld status
+        canBePickedUp = true;
     }
    
 
