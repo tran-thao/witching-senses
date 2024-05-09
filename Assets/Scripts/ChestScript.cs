@@ -14,12 +14,14 @@ using UnityEngine;
 
     void Start()
         {
-        levelManagerTouch = GameObject.Find("LevelManagerTouch").GetComponent<LevelManagerTouch>();
-        popUpTouch = GameObject.Find("PopUpTouch").GetComponent<PopUpTouch>();
+
         // Disable the particle system at the start
 
         GetComponent<ParticleSystem>().Stop();  // Stop the particle system (if it's playing)
 
+        levelManagerTouch = GameObject.Find("LevelManagerTouch").GetComponent<LevelManagerTouch>();
+        popUpTouch = GameObject.Find("PopUpTouch").GetComponent<PopUpTouch>();
+        
     }
 
         void OnTriggerEnter2D(Collider2D other)
@@ -36,8 +38,8 @@ using UnityEngine;
                     string heldKeyType = levelManagerTouch.GetHeldKeyType();  // Get the type of held key
                     if (heldKeyType == chestType)
                     {
-                    Debug.Log("Enter chest open");
-                    OpenChest();  // Open the chest
+                    //Debug.Log("Enter chest open");
+                    Invoke("OpenChest",1f);  // Open the chest
                         
                     levelManagerTouch.ChestOpened();  // Notify LevelManager that a chest is opened
                        
@@ -48,9 +50,9 @@ using UnityEngine;
                         levelManagerTouch.ResetCollectedKey();
                         ResetKeyHeld();  // Reset keyHeld status to false
 
-                        // Show feedback for wrong chest 
+                    // Show feedback for wrong chest 
 
-                        popUpTouch.ShowPopUp(popUpTouch.wrongChestPanel);
+                    Invoke("WrongChestMessage", 1f);
 
 
                 }
@@ -82,6 +84,11 @@ using UnityEngine;
         GetComponent<ParticleSystem>().Play();
     }
 
+    void WrongChestMessage()
+    {
+
+        popUpTouch.ShowPopUp(popUpTouch.wrongChestPanel);
+    }
 
 
 }
