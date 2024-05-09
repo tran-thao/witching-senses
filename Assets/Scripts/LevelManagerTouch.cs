@@ -131,7 +131,22 @@ public class LevelManagerTouch : MonoBehaviour
         SceneManager.LoadScene("MainMenu");
     }
 
-   
+    private void LoadSuccess()
+    {
+        // Load the Main menu scene by name 
+        successPanel.SetActive(true);
+    }
+
+    private void Update()
+    {
+        if (levelCompleted)
+        {
+            Invoke("LoadSuccess", 2f);
+    
+        }
+    }
+
+
 
 }
 

@@ -8,13 +8,14 @@ using UnityEngine;
         public string chestType;  // Type of chest (hot, cold, vibration)
         private bool canBeOpened = true;  // Flag to allow chest opening
         public LevelManagerTouch levelManagerTouch;  // Reference to the LevelManager script
-        
+        public PopUpTouch popUpTouch;// Reference to the PopUpTouch script
+
 
 
     void Start()
         {
         levelManagerTouch = GameObject.Find("LevelManagerTouch").GetComponent<LevelManagerTouch>();
-
+        popUpTouch = GameObject.Find("PopUpTouch").GetComponent<PopUpTouch>();
         // Disable the particle system at the start
 
         GetComponent<ParticleSystem>().Stop();  // Stop the particle system (if it's playing)
@@ -38,18 +39,18 @@ using UnityEngine;
                     Debug.Log("Enter chest open");
                     OpenChest();  // Open the chest
                         
-                        levelManagerTouch.ChestOpened();  // Notify LevelManager that a chest is opened
+                    levelManagerTouch.ChestOpened();  // Notify LevelManager that a chest is opened
                        
                 }
                     else
                     {
                         Debug.Log("Wrong chest! Try another key.");
-                    Debug.Log("Wrong chest! Key reset.");
-                    levelManagerTouch.ResetCollectedKey();
-                    ResetKeyHeld();  // Reset keyHeld status to false
-                                         //keyScript.ResetToInitialPosition();  // Reset the key to initial position
+                        levelManagerTouch.ResetCollectedKey();
+                        ResetKeyHeld();  // Reset keyHeld status to false
 
-                    // Show feedback for wrong chest attempt
+                        // Show feedback for wrong chest 
+
+                        popUpTouch.ShowPopUp(popUpTouch.wrongChestPanel);
 
 
                 }
@@ -61,9 +62,14 @@ using UnityEngine;
         {
             
             Debug.Log("Chest opened! You found the right key.");
+       
             canBeOpened = false;  // Prevent further openings
                                   // Play chest opening animation or effects
             ResetKeyHeld();  // Reset keyHeld status to false
+
+            // Show feedback for correct Chest
+
+            popUpTouch.ShowPopUp(popUpTouch.chestOpenPanel);
     }
 
     public void ResetKeyHeld()

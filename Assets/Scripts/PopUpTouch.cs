@@ -3,20 +3,19 @@ using UnityEngine.UI;
 
 public class PopUpTouch : MonoBehaviour
 {
-    public GameObject howToPopUpPanel; // Reference to the Welcome Pop-Up Panel GameObject
-    public GameObject successPopUpPanel; // Reference to the Message Pop-Up Panel GameObject
-    public GameObject wrongNotePopUpPanel; // Reference to the Message Pop-Up Panel GameObject
+    
+    public GameObject chestOpenPanel; // Reference to the Message Pop-Up Panel GameObject
+    public GameObject wrongChestPanel; // Reference to the Message Pop-Up Panel GameObject
     public GameObject instructionsTouchPanel;
     public GameObject introTouchPanel;
 
 
     void Start()
     {
-        //this.gameObject.SetActive(false);
+        
         // Show the initial welcome pop-up window at the beginning
-        howToPopUpPanel.SetActive(false);
-        successPopUpPanel.SetActive(false);
-        wrongNotePopUpPanel.SetActive(false);
+        chestOpenPanel.SetActive(false);
+        wrongChestPanel.SetActive(false);
         instructionsTouchPanel.SetActive(false);
         Time.timeScale = 0f; // Pause the game
 
