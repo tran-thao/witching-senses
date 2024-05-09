@@ -10,17 +10,14 @@ public class KeyScript : MonoBehaviour
     private bool touchedByPlayer = false; //check the collision
     private bool canBePickedUp = true;  // Flag to allow key pickup
     private Vector3 initialPosition;  // Initial position of the key
-  
-
-
-
+    //private ParticleSystem particlesSys;  // Reference to the Particle System component 
 
 
     // Start is called before the first frame update
     void Start()
     {
         levelManagerTouch = GameObject.Find("LevelManagerTouch").GetComponent<LevelManagerTouch>();
-        
+
         initialPosition = transform.position;  // Store initial position
         Debug.Log(initialPosition);
 
@@ -30,6 +27,14 @@ public class KeyScript : MonoBehaviour
             keyType = keyInfo.keyType;
             Debug.Log("Key Type: " + keyType);  // Debug log to check keyType
         }
+
+        // Get the Particle System component from the GameObject
+ 
+        // Disable the particle system at the start
+        
+            GetComponent<ParticleSystem>().Stop();  // Stop the particle system (if it's playing)
+           // particlesSys.gameObject.SetActive(false);  // Deactivate the GameObject
+        
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -40,6 +45,9 @@ public class KeyScript : MonoBehaviour
             Debug.Log("Player triggered key: " + keyType);
             touchedByPlayer = true;
 
+            ActivateParticleSystem();
+
+
             // Check if the player is not already holding a key
             if (!levelManagerTouch.IsKeyHeld())
             {
@@ -48,14 +56,18 @@ public class KeyScript : MonoBehaviour
                 {
                     case "Vibration":
                         // Play vibration effect
+                        
                         Debug.Log("Vibration key");
                         break;
                     case "Hot":
                         // Play hot effect
+                       
                         Debug.Log("Hot key");
                         break;
                     case "Cold":
                         // Play cold effect
+                       
+
                         Debug.Log("Cold key");
                         break;
                     default:
@@ -127,6 +139,11 @@ public class KeyScript : MonoBehaviour
         //levelManagerTouch.SetKeyHeld(true); // Reset keyHeld status
         canBePickedUp = true;
     }
-   
+
+    void ActivateParticleSystem()
+    {
+        GetComponent<ParticleSystem>().Play();
+    }
+
 
 }
