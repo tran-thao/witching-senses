@@ -33,7 +33,7 @@ public class KeyScript : MonoBehaviour
         // Disable the particle system at the start
         
             GetComponent<ParticleSystem>().Stop();  // Stop the particle system (if it's playing)
-           // particlesSys.gameObject.SetActive(false);  // Deactivate the GameObject
+         
         
     }
 
@@ -45,7 +45,7 @@ public class KeyScript : MonoBehaviour
             Debug.Log("Player triggered key: " + keyType);
             touchedByPlayer = true;
 
-            ActivateParticleSystem();
+            ActivateParticleSystem();//Enable to particles when player touch the key
 
 
             // Check if the player is not already holding a key

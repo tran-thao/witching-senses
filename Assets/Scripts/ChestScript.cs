@@ -14,14 +14,20 @@ using UnityEngine;
     void Start()
         {
         levelManagerTouch = GameObject.Find("LevelManagerTouch").GetComponent<LevelManagerTouch>();
-       
+
+        // Disable the particle system at the start
+
+        GetComponent<ParticleSystem>().Stop();  // Stop the particle system (if it's playing)
+
     }
 
         void OnTriggerEnter2D(Collider2D other)
         {
             if (canBeOpened && other.CompareTag("Player"))
             {
-            
+
+            ActivateParticleSystem(); //Enable to particles when player touch the chest
+
             // Check if the player is holding a key
             if (levelManagerTouch.IsKeyHeld())
                 {
@@ -65,7 +71,11 @@ using UnityEngine;
         levelManagerTouch.SetKeyHeld(false);  // Reset keyHeld status to false
     }
 
-  
+    void ActivateParticleSystem()
+    {
+        GetComponent<ParticleSystem>().Play();
+    }
+
 
 
 }
