@@ -73,7 +73,7 @@ public class LevelManagerTouch : MonoBehaviour
         
         if (collectedKey != null)
         {
-            Debug.LogError("Collected key :" + collectedKey);
+            Debug.Log("Collected key :" + collectedKey);
             collectedKey.ResetToInitialPosition();  // Reset the collected key to initial position
         }
         else
