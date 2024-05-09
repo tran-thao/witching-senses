@@ -10,10 +10,12 @@ using UnityEngine;
         public LevelManagerTouch levelManagerTouch;  // Reference to the LevelManager script
         
 
+
     void Start()
         {
         levelManagerTouch = GameObject.Find("LevelManagerTouch").GetComponent<LevelManagerTouch>();
-        }
+       
+    }
 
         void OnTriggerEnter2D(Collider2D other)
         {
@@ -35,10 +37,15 @@ using UnityEngine;
                     {
                         Debug.Log("Wrong chest! Try another key.");
                         ResetKeyHeld();  // Reset keyHeld status to false
+                                         //keyScript.ResetToInitialPosition();  // Reset the key to initial position
 
                     // Show feedback for wrong chest attempt
 
-                    
+                        Debug.Log("Wrong chest! Key reset.");
+
+                    levelManagerTouch.ResetCollectedKey();
+
+
                 }
                 }
             }
@@ -46,16 +53,19 @@ using UnityEngine;
 
         void OpenChest()
         {
-            canBeOpened = false;  // Prevent further openings
-                                  // Play chest opening animation or effects
+            
             Debug.Log("Chest opened! You found the right key.");
-       
-        }
+            canBeOpened = false;  // Prevent further openings
+                             // Play chest opening animation or effects
+
+    }
 
     public void ResetKeyHeld()
     {
         levelManagerTouch.SetKeyHeld(false);  // Reset keyHeld status to false
     }
+
+  
 
 
 }

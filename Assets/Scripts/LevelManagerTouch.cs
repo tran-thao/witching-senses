@@ -11,10 +11,12 @@ public class LevelManagerTouch : MonoBehaviour
     private bool gameOver = false; // Track game over state
     private bool[] collectedKeys = new bool[3]; //Store collected keys
     private bool keyHeld = false; //Store Key held value
+    private KeyScript collectedKey;  // Reference to the collected key
     private string heldKeyType;  // Store the type of held key
     public int totalChests;  // Total number of chests in the level
     private int openedChests = 0;  // Number of opened chests
     private bool levelCompleted = false;  // Flag to track level completion
+
 
     private void Start()
     {
@@ -59,6 +61,25 @@ public class LevelManagerTouch : MonoBehaviour
     public string GetHeldKeyType()
     {
         return heldKeyType;
+    }
+
+    public void SetCollectedKey(KeyScript key)
+    {
+        collectedKey = key;  // Set the collected key reference
+    }
+
+    public void ResetCollectedKey()
+    {
+        
+        if (collectedKey != null)
+        {
+            Debug.LogError("Collected key :" + collectedKey);
+            collectedKey.ResetToInitialPosition();  // Reset the collected key to initial position
+        }
+        else
+        {
+            Debug.LogError("No collected key reference!");
+        }
     }
 
     public void KeyCollected(string keyType)

@@ -10,7 +10,9 @@ public class KeyScript : MonoBehaviour
     private bool touchedByPlayer = false; //check the collision
     private bool canBePickedUp = true;  // Flag to allow key pickup
     private Vector3 initialPosition;  // Initial position of the key
-    
+  
+
+
 
 
 
@@ -18,6 +20,7 @@ public class KeyScript : MonoBehaviour
     void Start()
     {
         levelManagerTouch = GameObject.Find("LevelManagerTouch").GetComponent<LevelManagerTouch>();
+        
         initialPosition = transform.position;  // Store initial position
         Debug.Log(initialPosition);
 
@@ -76,6 +79,9 @@ public class KeyScript : MonoBehaviour
         {
             CollectKey();
             
+
+           // Invoke("ResetToInitialPosition", 3f); //testing reset key option
+           
         }
     }
 
@@ -96,11 +102,31 @@ public class KeyScript : MonoBehaviour
 
 
 
-                Destroy(gameObject);  // Destroy the key object after collection
+                //Destroy(gameObject);  // Destroy the key object after collection
+
+                levelManagerTouch.SetCollectedKey(this);  //Send the collected key to level Manager
+
+                
+                //Disable the renderer instead of destroying 
+
+                // Disable the key's renderer and collider
+                GetComponent<Renderer>().enabled = false;
+                GetComponent<Collider2D>().enabled = false;
             }
         }
+
+        
     }
 
-    
+    public void ResetToInitialPosition()
+    {
+        // Enable the key's renderer and collider
+        GetComponent<Renderer>().enabled = true;
+        GetComponent<Collider2D>().enabled = true;
+        // Reset key to initial position
+        // transform.position = initialPosition;
+        levelManagerTouch.SetKeyHeld(true); // Reset keyHeld status
+    }
+   
 
 }

@@ -1592,7 +1592,7 @@ GameObject:
   - component: {fileID: 34288479}
   - component: {fileID: 34288478}
   m_Layer: 5
-  m_Name: Intro
+  m_Name: IntroTouch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1618,7 +1618,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.000061035156, y: 0.000030517578}
+  m_AnchoredPosition: {x: 0.000061035156, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &34288478
@@ -3632,7 +3632,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: -2.75}
@@ -3709,7 +3709,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   musicButtonManager: {fileID: 0}
-  speed: 10.5
+  speed: 30
 --- !u!1 &129297425
 GameObject:
   m_ObjectHideFlags: 0
@@ -28872,11 +28872,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4102447025557854336, guid: 4f667507462b27b45806956e022c4e36, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.15
+      value: -5.6
       objectReference: {fileID: 0}
     - target: {fileID: 4102447025557854336, guid: 4f667507462b27b45806956e022c4e36, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -37.06
+      value: -40.3
       objectReference: {fileID: 0}
     - target: {fileID: 4102447025557854336, guid: 4f667507462b27b45806956e022c4e36, type: 3}
       propertyPath: m_LocalPosition.z
@@ -32039,7 +32039,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -32068,8 +32068,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chestType: Hot
-  keyObject: {fileID: 0}
-  levelManagerTouch: {fileID: 0}
+  levelManagerTouch: {fileID: 1421307874}
 --- !u!1001 &976698053
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -33311,8 +33310,8 @@ MonoBehaviour:
   howToPopUpPanel: {fileID: 656386462}
   successPopUpPanel: {fileID: 1141947291}
   wrongNotePopUpPanel: {fileID: 1466093316}
-  instructionsPanel: {fileID: 1070389216}
-  introPanel: {fileID: 34288476}
+  instructionsTouchPanel: {fileID: 1070389216}
+  introTouchPanel: {fileID: 34288476}
 --- !u!1 &1017063358 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8402491310591536406, guid: 4f667507462b27b45806956e022c4e36, type: 3}
@@ -34449,7 +34448,7 @@ GameObject:
   - component: {fileID: 1070389219}
   - component: {fileID: 1070389218}
   m_Layer: 5
-  m_Name: Instructions
+  m_Name: InstructionsTouch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -40584,7 +40583,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -40613,8 +40612,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chestType: Vibration
-  keyObject: {fileID: 0}
-  levelManagerTouch: {fileID: 0}
+  levelManagerTouch: {fileID: 1421307874}
 --- !u!1001 &1299987319
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -42436,7 +42434,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -42465,8 +42463,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chestType: Cold
-  keyObject: {fileID: 0}
-  levelManagerTouch: {fileID: 0}
+  levelManagerTouch: {fileID: 1421307874}
 --- !u!1001 &1358321484
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -51389,11 +51386,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4102447025557854336, guid: 4f667507462b27b45806956e022c4e36, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.7
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4102447025557854336, guid: 4f667507462b27b45806956e022c4e36, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -39.1
+      value: -40.4
       objectReference: {fileID: 0}
     - target: {fileID: 4102447025557854336, guid: 4f667507462b27b45806956e022c4e36, type: 3}
       propertyPath: m_LocalPosition.z
