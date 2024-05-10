@@ -18,8 +18,8 @@ public class TogglePanels : MonoBehaviour
         {
             Debug.Log("return");
             Debug.Log(panel.name);
-            PopUpScript popUpScript = GameObject.Find("Canvas").GetComponent<PopUpScript>();
-            popUpScript.ClosePopUp(panel);
+            SmellPopUp smellPopUp = GameObject.Find("Canvas").GetComponent<SmellPopUp>();
+            smellPopUp.ClosePopUp(panel);
             //panel.SetActive(false);
             //Time.timeScale = 1f; // Resume the game
         }
