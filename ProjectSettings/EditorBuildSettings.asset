@@ -6,23 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-<<<<<<< HEAD
     path: Assets/Levels/Scenes/SampleScene1.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
     path: Assets/Levels/Scenes/MainMenu.unity
     guid: 28a401360c3eb1e42a128c5af6619b04
   - enabled: 1
-    path: Assets/Levels/Scenes/Tutorial Level.unity
-    guid: a63b0826848b7ed4fba9cac09ec0f043
-=======
-    path: Assets/Levels/Scenes/MainMenu.unity
-    guid: 28a401360c3eb1e42a128c5af6619b04
-  - enabled: 1
-    path: Assets/Levels/Scenes/SampleScene.unity
+    path: Assets/Levels/Scenes/SampleScene1.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
     path: Assets/Levels/Scenes/LevelTouch.unity
     guid: 4c57d9ca101f3f1419013fd1d9bf2e7a
->>>>>>> LevelTouch
   m_configObjects: {}
