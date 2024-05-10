@@ -5,7 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - MusicButton
+<<<<<<< HEAD
   - smellIngredient
+=======
+  - Key
+>>>>>>> LevelTouch
   layers:
   - Default
   - TransparentFX
