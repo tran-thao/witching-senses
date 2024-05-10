@@ -27,7 +27,7 @@ public class LoadFirstScene : MonoBehaviour
 
     public void LoadLevel4()
     {
-        SceneManager.LoadScene("LevelSight");
+        SceneManager.LoadScene("Sight2.0");
     }
 
 }
