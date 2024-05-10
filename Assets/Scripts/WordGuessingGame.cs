@@ -18,6 +18,10 @@ public class WordGuessingGame : MonoBehaviour
         "butterflywing pattern",
         "last sunray",
         "moonflower petal",
+        "aurora essence",
+        "heartbreak tears",
+        "mirage mist",
+        "shadow veil",
     };
 
     private string currentWord;
