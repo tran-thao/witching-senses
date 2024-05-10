@@ -20,8 +20,9 @@ using UnityEngine;
         GetComponent<ParticleSystem>().Stop();  // Stop the particle system (if it's playing)
 
         levelManagerTouch = GameObject.Find("LevelManagerTouch").GetComponent<LevelManagerTouch>();
-        popUpTouch = GameObject.Find("PopUpTouch").GetComponent<PopUpTouch>();
-        
+        // popUpTouch = GameObject.Find("PopUpTouch").GetComponent<PopUpTouch>();
+        popUpTouch = GetComponent<PopUpTouch>();
+
     }
 
         void OnTriggerEnter2D(Collider2D other)
