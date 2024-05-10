@@ -11,11 +11,6 @@ public class TogglePanels : MonoBehaviour
     void Start()
     {
         panel = this.transform.parent.gameObject;
-
-        
-        
-
-
     }
 
     // Update is called once per frame
@@ -38,9 +33,6 @@ public class TogglePanels : MonoBehaviour
                 PopUpScript popUpScript = GameObject.Find("Canvas").GetComponent<PopUpScript>();
                 popUpScript.ClosePopUp(panel);
             }
-
-
-
 
         }
     }
