@@ -21912,8 +21912,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a582b6c8775546919a5602d7694a9c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerTransform: {fileID: 123247635}
-  distanceFromPlayer: 5
 --- !u!23 &680279540
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -32145,6 +32143,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timerText: {fileID: 1271454466}
   gameManager: {fileID: 0}
+  smellGameManager: {fileID: 170568669}
 --- !u!114 &1014301439
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,39 +1,78 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class TimerScript : MonoBehaviour
 {
     public TMP_Text timerText; // Reference to the Text UI element
 
-   
-
     private float timeRemaining = 240f; // 3 minutes in seconds
     public GameManager gameManager; // Reference to the GameManager script
+    public SmellGameManager smellGameManager;
 
+    private void Start()
+    {
+        
+    }
 
     void Update()
     {
-        if (timeRemaining > 0)
-        {
-            timeRemaining -= Time.deltaTime; // Decrease the remaining time
-            UpdateTimerDisplay(); // Update the timer display
-        }
-        else
-        {
-            timeRemaining = 0; // Ensure the timer doesn't go negative
-            UpdateTimerDisplay(); // Update the timer display
 
-            // Trigger game over condition when timer reaches 0
-            if (gameManager != null)
+        if (SceneManager.GetActiveScene().name == "Smell")
+        {
+            Debug.Log("Smell level");
+            
+
+            if (timeRemaining > 0)
             {
-                gameManager.TimerZero(); // Call the game over method in GameManager
+
+                timeRemaining -= Time.deltaTime; // Decrease the remaining time
+                UpdateTimerDisplay(); // Update the timer display
             }
             else
             {
-                Debug.LogError("GameManager reference is missing in TimerScript!");
+                timeRemaining = 0; // Ensure the timer doesn't go negative
+                UpdateTimerDisplay(); // Update the timer display
+
+                // Trigger game over condition when timer reaches 0
+                if (smellGameManager != null)
+                {
+                    smellGameManager.TimerZero(); // Call the game over method in GameManager
+                }
+                else
+                {
+                    Debug.LogError("GameManager reference is missing in TimerScript!");
+                }
             }
         }
+        else {
+
+            if (timeRemaining > 0)
+            {
+
+                timeRemaining -= Time.deltaTime; // Decrease the remaining time
+                UpdateTimerDisplay(); // Update the timer display
+            }
+            else
+            {
+                timeRemaining = 0; // Ensure the timer doesn't go negative
+                UpdateTimerDisplay(); // Update the timer display
+
+                // Trigger game over condition when timer reaches 0
+                if (gameManager != null)
+                {
+                    gameManager.TimerZero(); // Call the game over method in GameManager
+                }
+                else
+                {
+                    Debug.LogError("GameManager reference is missing in TimerScript!");
+                }
+            }
+        }
+
+
+        
     }
 
     void UpdateTimerDisplay()
