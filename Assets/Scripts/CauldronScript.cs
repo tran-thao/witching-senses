@@ -6,11 +6,12 @@ public class CauldronScript : MonoBehaviour
     private SmellGameManager gameManagerScript;
     SpriteRenderer mySmellSprite;
     SpriteRenderer referenceColor;
-
+    SmellPopUp smellPopUp;
 
     void Start()
     {
         gameManagerScript = GameObject.Find("smellGameManager").GetComponent<SmellGameManager>();
+        smellPopUp = GameObject.Find("Canvas").GetComponent<SmellPopUp>();
         
         mySmellSprite = GameObject.Find("mySmell").GetComponent<SpriteRenderer>();
     }
@@ -47,13 +48,33 @@ public class CauldronScript : MonoBehaviour
 
                             if (checkCorrectColor(mySmellSprite.color))
                             {
+                                gameManagerScript.success = true;
+                                smellPopUp.ShowPopUp(smellPopUp.successPanel);
                                 Debug.Log("Success");
+                                gameManagerScript.DestroyAllIngredients();
+                                gameManagerScript.SpawnIngredients();
+                               
                             } else
                             {
                                 Debug.Log("Wrong Color");
+                                smellPopUp.ShowPopUp(smellPopUp.wrongPanel);
                                 mySmellSprite.color = Color.white;
                             }
                         }
+
+                        if (mySmellSprite.color == Color.blue)
+                        {
+                            gameManagerScript.blueCount--;
+                        }
+                        else if (mySmellSprite.color == Color.red)
+                        {
+                            gameManagerScript.redCount--;
+                        }
+                        else if (mySmellSprite.color == Color.yellow)
+                        {
+                            gameManagerScript.yellowCount--;
+                        }
+
                         DestroyObject(collision.gameObject);
 
 
