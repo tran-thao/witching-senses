@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class Showshelf : MonoBehaviour
 {
-    public GameObject shelfWithPotions; // Reference to the shelf GameObject
+    public GameObject shelfWithPotions; 
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         Debug.Log("hey");
-        if (other.CompareTag("Player")) // Assuming the player interacts with the object
+        if (other.CompareTag("Player"))
         {
             ActivateShelf();
             Debug.Log("hey hallo");
@@ -18,7 +18,6 @@ public class Showshelf : MonoBehaviour
 
     private void ActivateShelf()
     {
-        // Activate the shelf GameObject and its children
         shelfWithPotions.SetActive(true);
     }
 }

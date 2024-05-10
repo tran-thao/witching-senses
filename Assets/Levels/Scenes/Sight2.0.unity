@@ -3737,7 +3737,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   musicButtonManager: {fileID: 0}
-  speed: 10.5
+  speed: 30
 --- !u!1 &124896613
 GameObject:
   m_ObjectHideFlags: 0
@@ -22903,6 +22903,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 619482056}
   m_CullTransparentMesh: 1
+--- !u!1 &619532644 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7102824198414280480, guid: a8a5ad656decb4c6588d83fa200b7fcf, type: 3}
+  m_PrefabInstance: {fileID: 686835577}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &619532649
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 619532644}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29418737ad17b704e9db0f88ca91234d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AnagramCanvas: {fileID: 0}
 --- !u!1001 &619577659
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25189,10 +25207,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5553914344820572633, guid: a8a5ad656decb4c6588d83fa200b7fcf, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7102824198414280480, guid: a8a5ad656decb4c6588d83fa200b7fcf, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 619532649}
   m_SourcePrefab: {fileID: 100100000, guid: a8a5ad656decb4c6588d83fa200b7fcf, type: 3}
 --- !u!1001 &687774407
 PrefabInstance:
@@ -27973,6 +27995,24 @@ Transform:
   - {fileID: 1518369187}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &777853254 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7102824198414280480, guid: a8a5ad656decb4c6588d83fa200b7fcf, type: 3}
+  m_PrefabInstance: {fileID: 1152613847}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &777853259
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 777853254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29418737ad17b704e9db0f88ca91234d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AnagramCanvas: {fileID: 1073775627}
 --- !u!1001 &782836910
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -34447,7 +34487,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 3
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 0.29559743, g: 0.22030371, b: 0.22030371, a: 1}
+  m_Color: {r: 0.509434, g: 0.35083658, b: 0.35083658, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -37953,10 +37993,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5553914344820572633, guid: a8a5ad656decb4c6588d83fa200b7fcf, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7102824198414280480, guid: a8a5ad656decb4c6588d83fa200b7fcf, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1695498587}
   m_SourcePrefab: {fileID: 100100000, guid: a8a5ad656decb4c6588d83fa200b7fcf, type: 3}
 --- !u!1 &1073775623
 GameObject:
@@ -37973,7 +38017,7 @@ GameObject:
   - component: {fileID: 1073775629}
   - component: {fileID: 1073775628}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: AnagramCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -40268,10 +40312,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5553914344820572633, guid: a8a5ad656decb4c6588d83fa200b7fcf, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7102824198414280480, guid: a8a5ad656decb4c6588d83fa200b7fcf, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 777853259}
   m_SourcePrefab: {fileID: 100100000, guid: a8a5ad656decb4c6588d83fa200b7fcf, type: 3}
 --- !u!1001 &1155587655
 PrefabInstance:
@@ -56296,6 +56344,24 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8863895494598039943, guid: 6663055d92437674c850d216e1cc6dd2, type: 3}
   m_PrefabInstance: {fileID: 1694316516}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1695498582 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7102824198414280480, guid: a8a5ad656decb4c6588d83fa200b7fcf, type: 3}
+  m_PrefabInstance: {fileID: 1072223381}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1695498587
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1695498582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29418737ad17b704e9db0f88ca91234d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AnagramCanvas: {fileID: 0}
 --- !u!1001 &1697180293
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -59184,6 +59250,7 @@ MonoBehaviour:
   anagramText: {fileID: 831906302}
   userInputField: {fileID: 1358486193}
   resultText: {fileID: 559706310}
+  ShowAnagram: {fileID: 0}
 --- !u!4 &1754999326
 Transform:
   m_ObjectHideFlags: 0

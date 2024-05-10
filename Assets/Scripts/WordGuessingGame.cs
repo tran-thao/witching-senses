@@ -10,6 +10,7 @@ public class WordGuessingGame : MonoBehaviour
     public TMP_Text anagramText;
     public TMP_InputField userInputField;
     public TMP_Text resultText;
+    public Canvas ShowAnagram;
 
     private List<string> words = new List<string>()
     {
@@ -32,6 +33,7 @@ public class WordGuessingGame : MonoBehaviour
         ChooseRandomWord();
         UpdateAnagramText();
         userInputField.onEndEdit.AddListener(delegate { CheckAnswer(); });
+        ShowAnagram = GameObject.Find("AnagramCanvas").GetComponent<Canvas>();
     }
 
     void ChooseRandomWord()
@@ -95,11 +97,18 @@ public class WordGuessingGame : MonoBehaviour
         if (isCorrect)
         {
             resultText.text = "Correct!";
+            Invoke("togglecanvas", 2.0f);
         }
         else
         {
             resultText.text = "Incorrect! Try again.";
         }
+    }
+
+    void togglecanvas()
+    {
+        ShowAnagram.enabled = false;
+
     }
 
 }

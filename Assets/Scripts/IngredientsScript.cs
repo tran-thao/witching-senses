@@ -34,6 +34,7 @@ public class IngredientScript : MonoBehaviour
                 
             // Destroy the ingredient when the player touches it
             Destroy(gameObject);
+
         }
     }
 }
