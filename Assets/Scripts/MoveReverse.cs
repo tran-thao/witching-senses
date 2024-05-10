@@ -31,11 +31,5 @@ public class MoMoveReverse : MonoBehaviour
         myRigidbody2D.velocity= new Vector2(horizontal*speed, vertical*speed);
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag("MusicButton"))
-        {
-            musicButtonManager.CheckInput(other.gameObject);
-        }
-    }
+    
 }
