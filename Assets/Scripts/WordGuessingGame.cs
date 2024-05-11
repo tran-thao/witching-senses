@@ -97,18 +97,33 @@ public class WordGuessingGame : MonoBehaviour
         if (isCorrect)
         {
             resultText.text = "Correct!";
-            Invoke("togglecanvas", 2.0f);
+            Invoke("togglecanvas", 1.5f);
+            Invoke("HideResultText", 1.5f);
+            Invoke("ShowNewAnagram", 1.8f);
+           
         }
         else
         {
             resultText.text = "Incorrect! Try again.";
         }
+
+        userInputField.text = "";
     }
 
     void togglecanvas()
     {
         ShowAnagram.enabled = false;
+    }
 
+    void HideResultText()
+    {
+        resultText.text = "";
+    }
+
+    void ShowNewAnagram()
+    {
+        ChooseRandomWord();
+        UpdateAnagramText();
     }
 
 }
