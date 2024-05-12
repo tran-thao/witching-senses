@@ -148,7 +148,7 @@ public class LevelManagerTouch : MonoBehaviour
         if (levelCompleted)
         {
             Invoke("LoadSuccess", 2f);
-           // Invoke("LoadLevelSight", 3f);
+            Invoke("LoadLevelSight", 3f);
 
 
         }
