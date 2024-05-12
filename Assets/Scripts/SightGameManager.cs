@@ -8,6 +8,7 @@ public class SightGameManager : MonoBehaviour
     public List<GameObject> ingredients; // List to store references to ingredients
     public GameObject gameOverPanel; // Reference to the game over panel
     public GameObject successPanel; // Reference to the success panel
+    public GameObject endPanel;
     public WordGuessingGame[] wordGuessingGames;
     private bool gameOver = false; // Track game over state
     public int ingredientsCollected = 0;
@@ -33,6 +34,11 @@ public class SightGameManager : MonoBehaviour
         else
         {
             Debug.LogError("Success Panel reference is missing!");
+        }
+
+        if (endPanel != null)
+        {
+            endPanel.SetActive(false);
         }
     }
 
@@ -80,7 +86,7 @@ public class SightGameManager : MonoBehaviour
         if (ingredientsCollected >= 3 && AnagramsSolved >= 3)
         {
             Debug.Log("showing success panel..");
-            ShowSuccessPanel();
+            ShowEndPanel();
         }
     }
 
@@ -91,13 +97,13 @@ public class SightGameManager : MonoBehaviour
         if (ingredientsCollected >= 3 && AnagramsSolved >= 3)
         {
             Debug.Log("showing success panel..");
-            ShowSuccessPanel();
+            ShowEndPanel();
         }
     }
 
-    void ShowSuccessPanel()
+    void ShowEndPanel()
     {
-        successPanel.SetActive(true);
+        endPanel.SetActive(true);
         Invoke("LoadMainMenu", 3f);
     }
 }

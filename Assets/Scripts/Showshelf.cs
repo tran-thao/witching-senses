@@ -6,6 +6,7 @@ public class Showshelf : MonoBehaviour
 {
     public GameObject shelfWithPotions;
     public GameObject WordGuessingGame;
+    public GameObject maskObject;
 
     private bool shelfActive = false;
 
@@ -17,6 +18,7 @@ public class Showshelf : MonoBehaviour
             {
                 ActivateShelf();
                 DeactivateWordGuessingGame();
+                DeactivateMask();
             }
         }
     }
@@ -32,15 +34,26 @@ public class Showshelf : MonoBehaviour
         WordGuessingGame.SetActive(false);
     }
 
+    private void DeactivateMask()
+    {
+        maskObject.SetActive(false);
+    }
+
     public void CloseShelf()
     {
         shelfWithPotions.SetActive(false);
         shelfActive = false;
         ActivateWordGuessingGame();
+        ActivateMask();
     }
 
     private void ActivateWordGuessingGame()
     {
         WordGuessingGame.SetActive(true);
+    }
+
+    private void ActivateMask()
+    {
+        maskObject.SetActive(true);
     }
 }
