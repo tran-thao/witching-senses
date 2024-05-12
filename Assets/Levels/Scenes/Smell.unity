@@ -3798,7 +3798,7 @@ Transform:
   m_GameObject: {fileID: 124254196}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 50.9523, y: 22.4063, z: -1}
+  m_LocalPosition: {x: 50.9523, y: 5.8, z: -1}
   m_LocalScale: {x: 1.5219767, y: 1.4880419, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -24046,7 +24046,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 26}
+  m_AnchoredPosition: {x: 0, y: 29}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &742448155
@@ -24069,14 +24069,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'The second level will focus on smell:
-
-    Your goal is to match the smell
-    color of your cauldron with the reference cauldron. Use the ''E'' key to pick
-    up and drop ingredients into your cauldron. Happy brewing!
-
-
-'
+  m_text: "The second level will focus on smell:\nYour goal is to match the smell
+    color of your cauldron with the reference cauldron on the parchment paper. Use
+    the 'E' key to pick up and drop ingredients into your cauldron. \nHappy brewing!\n\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8c38a0aea1e1b4b1db8e20b42099d45c, type: 2}
   m_sharedMaterial: {fileID: 9205972517442200143, guid: 8c38a0aea1e1b4b1db8e20b42099d45c, type: 2}
@@ -24139,7 +24134,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -272.24774, y: -10.948395, z: -268.3069, w: -121.37924}
+  m_margin: {x: -272.24774, y: -10.948395, z: -268.3069, w: -155.66849}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -24946,7 +24941,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3523069734934134166, guid: 2b748807e790e4e2c87bd3c75f4d8fca, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 23.542
+      value: 6.9357004
       objectReference: {fileID: 0}
     - target: {fileID: 3523069734934134166, guid: 2b748807e790e4e2c87bd3c75f4d8fca, type: 3}
       propertyPath: m_LocalPosition.z
@@ -45189,7 +45184,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6797014792347777370, guid: 1ff73919ba23c4f4cb6da3176f6c24a1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 12.7
+      value: -3.9062996
       objectReference: {fileID: 0}
     - target: {fileID: 6797014792347777370, guid: 1ff73919ba23c4f4cb6da3176f6c24a1, type: 3}
       propertyPath: m_LocalPosition.z

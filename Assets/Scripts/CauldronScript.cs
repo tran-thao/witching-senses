@@ -41,7 +41,7 @@ public class CauldronScript : MonoBehaviour
                         Debug.Log("testgame done");
                         mySmellSprite.color = Color.yellow;
                         gameManagerScript.invokeMethod("HandleTestGame", 1.5f);
-
+                        DestroyObject(collision.gameObject);
                     }
 
                     if (gameManagerScript.gameStarted)
