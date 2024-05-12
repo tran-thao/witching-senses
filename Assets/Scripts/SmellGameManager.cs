@@ -80,6 +80,12 @@ public class SmellGameManager : MonoBehaviour
 
     private void Update()
     {
+        if (!success && gameStarted && !HasIngredientsLeft())
+        {
+            Invoke("TimerZero", 1f);
+        }
+
+
         if (ingredientsCollected >= 3)
         {
             successPanel.SetActive(true);
@@ -87,6 +93,16 @@ public class SmellGameManager : MonoBehaviour
             Invoke("LoadLevelTouch", 2f);
         }
     }
+
+    bool HasIngredientsLeft()
+    {
+        // Find all GameObjects with the "smellIngredient" tag
+        GameObject[] ingredientClones = GameObject.FindGameObjectsWithTag("smellIngredient");
+
+        // Check if there are any clones left in the scene
+        return ingredientClones.Length > 0;
+    }
+
 
     public void startSmellGame()
     {
@@ -183,12 +199,7 @@ public class SmellGameManager : MonoBehaviour
             spawnedCount++;
         }
 
-        // Check if there are no ingredients left of any required color
-        if (!HasRequiredColors(blueCount, redCount, yellowCount))
-        {
-            // Trigger game over
-            TimerZero();
-        }
+        
     }
 
 
@@ -315,6 +326,7 @@ public class SmellGameManager : MonoBehaviour
         }
 
     }
+
 
     public void LoadMainMenu()
     {
