@@ -18,67 +18,56 @@ public class CauldronScript : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        //Debug.Log(collision.gameObject.name);
+        Debug.Log(collision.gameObject.name);
         if (collision.gameObject.tag == "Player")
         {
-            if (!gameManagerScript.gameStarted)
+
+            if (!gameManagerScript.gameStarted && gameManagerScript.testGameDone)
             {
+                Debug.Log("startsmellgame");
                 gameManagerScript.startSmellGame();
                 gameManagerScript.gameStarted = true;
             }
+
             else
             {
+                Debug.Log("else");
                 if (collision.gameObject.transform.childCount > 0)
                 {
-                    //Debug.Log("ingredient collide");
                     Color smellIngredientColor = collision.gameObject.transform.GetChild(0).transform.GetChild(0).GetComponent<SpriteRenderer>().color;
-                    //Debug.Log("color : " + collision.gameObject.transform.GetChild(0).transform.GetChild(0).GetComponent<SpriteRenderer>().color);
-                    //Debug.Log("smell color: " + smellIngredientColor);
+
+                    if (!gameManagerScript.testGameDone)
+                    {
+                        Debug.Log("testgame done");
+                        mySmellSprite.color = Color.yellow;
+                        gameManagerScript.invokeMethod("HandleTestGame", 1.5f);
+
+                    }
 
                     if (gameManagerScript.gameStarted)
                     {
                         if (checkToReplace(smellIngredientColor))
                         {
-                            //Debug.Log("replace");
+                            Debug.Log("replace");
                             mySmellSprite.color = smellIngredientColor;
 
                         } else {
-                            //Debug.Log("mix");
+                            Debug.Log("mix");
                             mySmellSprite.color = mixColor(smellIngredientColor);
 
                             if (checkCorrectColor(mySmellSprite.color))
                             {
-                                gameManagerScript.success = true;
-                                smellPopUp.ShowPopUp(smellPopUp.successPanel);
-                                Debug.Log("Success");
-                                gameManagerScript.DestroyAllIngredients();
-                                gameManagerScript.SpawnIngredients();
+                                handleSuccess();
                                
                             } else
                             {
-                                Debug.Log("Wrong Color");
-                                smellPopUp.ShowPopUp(smellPopUp.wrongPanel);
-                                mySmellSprite.color = Color.white;
+                                Invoke("handleWrongColor", 1f);
+                                //handleWrongColor();
                             }
                         }
 
-                        if (mySmellSprite.color == Color.blue)
-                        {
-                            gameManagerScript.blueCount--;
-                        }
-                        else if (mySmellSprite.color == Color.red)
-                        {
-                            gameManagerScript.redCount--;
-                        }
-                        else if (mySmellSprite.color == Color.yellow)
-                        {
-                            gameManagerScript.yellowCount--;
-                        }
-
+                        updateColorCount();
                         DestroyObject(collision.gameObject);
-
-
-
 
                     } else {
                         //Debug.Log("This GameObject does not have any child objects.");
@@ -143,6 +132,22 @@ public class CauldronScript : MonoBehaviour
         return color;
     }
 
+    private void updateColorCount()
+    {
+        if (mySmellSprite.color == Color.blue)
+        {
+            gameManagerScript.blueCount--;
+        }
+        else if (mySmellSprite.color == Color.red)
+        {
+            gameManagerScript.redCount--;
+        }
+        else if (mySmellSprite.color == Color.yellow)
+        {
+            gameManagerScript.yellowCount--;
+        }
+    }
+
     private bool checkCorrectColor(Color color)
     {
         //Debug.Log("color mixed: " + color);
@@ -163,6 +168,22 @@ public class CauldronScript : MonoBehaviour
         {
             Destroy(gameObject.transform.GetChild(i).gameObject);
         }
+    }
+
+    private void handleWrongColor()
+    {
+        Debug.Log("Wrong Color");
+        smellPopUp.ShowPopUp(smellPopUp.wrongPanel);
+        mySmellSprite.color = Color.white;
+    }
+
+    private void handleSuccess()
+    {
+        gameManagerScript.success = true;
+        smellPopUp.ShowPopUp(smellPopUp.successPanel);
+        Debug.Log("Success");
+        gameManagerScript.DestroyAllIngredients();
+        gameManagerScript.SpawnIngredients();
     }
 }
 
