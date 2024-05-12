@@ -7,7 +7,8 @@ public class SmellPopUp : MonoBehaviour
     public GameObject instructionsPanel;
     //public GameObject GoToPianoPopUpPanel;
     public GameObject successPanel; 
-    public GameObject wrongPanel; 
+    public GameObject wrongPanel;
+    public GameObject testGameDone;
 
 
     void Start()
@@ -17,6 +18,7 @@ public class SmellPopUp : MonoBehaviour
         ShowPopUp(instructionsPanel);
         successPanel.SetActive(false);
         wrongPanel.SetActive(false);
+        testGameDone.SetActive(false);
         Time.timeScale = 0f; // Pause the game
 
     }

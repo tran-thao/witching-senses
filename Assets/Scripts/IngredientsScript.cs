@@ -14,7 +14,6 @@ public class IngredientScript : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             gameManagerScript.ingredientsCollected++;
-            Debug.Log("ingredients remaining " + gameManagerScript.ingredientsCollected);
             // Destroy the ingredient when the player touches it
             Destroy(gameObject);
         }

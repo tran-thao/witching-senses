@@ -21,7 +21,7 @@ public class TimerScript : MonoBehaviour
 
         if (SceneManager.GetActiveScene().name == "Smell")
         {
-            Debug.Log("Smell level");
+            //Debug.Log("Smell level");
             
 
             if (timeRemaining > 0)

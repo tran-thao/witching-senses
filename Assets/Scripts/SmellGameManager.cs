@@ -12,6 +12,7 @@ public class SmellGameManager : MonoBehaviour
     public List<Vector3> spawnPoints = new List<Vector3>(); // Define an array of spawn points
     public int numberOfPrefabs = 9;
     public bool gameStarted;
+    public bool testGameDone;
     public SpriteRenderer referenceSmellSprite;
     public SpriteRenderer mySmellSprite;
     public bool success;
@@ -27,6 +28,7 @@ public class SmellGameManager : MonoBehaviour
     public int ingredientsCollected = 0;
 
     public GameObject ingredientsPrefab;
+    public List<Sprite> smellSpritePrefabs;
 
     public int blueCount = 0;
     public int redCount = 0;
@@ -35,19 +37,20 @@ public class SmellGameManager : MonoBehaviour
     void Start()
     {
         gameStarted = false;
+        testGameDone = false;
         referenceSmellSprite = GameObject.Find("referenceSmell").GetComponent<SpriteRenderer>();
         mySmellSprite = GameObject.Find("mySmell").GetComponent<SpriteRenderer>();
 
         // Define spawn points
         spawnPoints.Add(new Vector3(-48.2f, -20.6f, -2f));
         spawnPoints.Add(new Vector3(-48.9f, 20.3f, -2f));
-        spawnPoints.Add(new Vector3(5.9f, -12.3f, -2f));
+        spawnPoints.Add(new Vector3(-15.5f, 26.7f, -2f));
         spawnPoints.Add(new Vector3(-3.7f, 21f, -2f));
         spawnPoints.Add(new Vector3(21.92376f, 26.7061f, -2f));
-        spawnPoints.Add(new Vector3(54.24879f, 15.32769f, -2f));
+        spawnPoints.Add(new Vector3(33.6f, -3.8f, -2f));
         spawnPoints.Add(new Vector3(47.3f, -20.6f, -2f));
         spawnPoints.Add(new Vector3(-25.5f, 27.2f, -2f));
-        spawnPoints.Add(new Vector3(-13.5f, -24.8f, -2f));
+        spawnPoints.Add(new Vector3(-17f, -16.5f, -2f));
 
 
 
@@ -97,6 +100,9 @@ public class SmellGameManager : MonoBehaviour
 
         while (spawnedCount < numberOfPrefabs && spawnPoints.Count > 0)
         {
+
+            List<Sprite> usedSprites = new List<Sprite>();
+
             // Get a random index from the spawnPoints list
             int randomIndex = Random.Range(0, spawnPoints.Count);
             Vector3 spawnPoint = spawnPoints[randomIndex];
@@ -104,11 +110,17 @@ public class SmellGameManager : MonoBehaviour
             // Determine which color to spawn
             Color ingredientColor = GetNextIngredientColor(blueCount, redCount, yellowCount);
 
+            // Get a random sprite from the list of sprites
+            Sprite randomSprite = GetRandomSprite(usedSprites);
+
             // Instantiate prefab at the spawn point
             GameObject ingred = Instantiate(smellIngredient, spawnPoint, Quaternion.identity);
             GameObject ingredSmell = Instantiate(smellSprite, ingred.transform);
             ingredSmell.transform.localPosition = new Vector3(0f, 0.7f, 0f); // Adjust the offset as needed
             ingredSmell.GetComponent<SpriteRenderer>().color = ingredientColor;
+
+            // Assign the random sprite to the sprite renderer
+            ingred.GetComponent<SpriteRenderer>().sprite = randomSprite;
 
             // Update the counts based on the color spawned
             if (ingredientColor == Color.blue)
@@ -138,6 +150,27 @@ public class SmellGameManager : MonoBehaviour
         }
     }
 
+
+    Sprite GetRandomSprite(List<Sprite> usedSprites)
+    {
+        // Get a random index for the list of sprites
+        int randomIndex = Random.Range(0, smellSpritePrefabs.Count);
+
+        // Check if the sprite has already been used
+        while (usedSprites.Contains(smellSpritePrefabs[randomIndex]))
+        {
+            // If the sprite has been used, get another random index
+            randomIndex = Random.Range(0, smellSpritePrefabs.Count);
+        }
+
+        // Add the used sprite to the list
+        usedSprites.Add(smellSpritePrefabs[randomIndex]);
+
+        // Return the random sprite
+        return smellSpritePrefabs[randomIndex];
+    }
+
+
     bool HasRequiredColors(int blueCount, int redCount, int yellowCount)
     {
         foreach (Color requiredColor in requiredColors)
@@ -151,7 +184,6 @@ public class SmellGameManager : MonoBehaviour
         }
         return true;
     }
-
 
 
     Color GetNextIngredientColor(int blueCount, int redCount, int yellowCount)
@@ -178,10 +210,6 @@ public class SmellGameManager : MonoBehaviour
             return ingredientColors[randomIndex];
         }
     }
-
-
-
-
 
     void generateReferenceSmell()
     {
@@ -260,8 +288,6 @@ public class SmellGameManager : MonoBehaviour
         Instantiate(ingredientsPrefab, new Vector2(50f, -23f), Quaternion.identity);
         Instantiate(ingredientsPrefab, new Vector2(38f, 35f), Quaternion.identity);
 
-        //}
-
     }
 
  
@@ -273,6 +299,23 @@ public class SmellGameManager : MonoBehaviour
         {
             Destroy(ingredient);
         }
+    }
+
+
+    public void HandleTestGame()
+    {
+            testGameDone = true;
+            SmellPopUp popUp = GameObject.Find("Canvas").GetComponent<SmellPopUp>();
+            popUp.ShowPopUp(popUp.testGameDone);
+            mySmellSprite.color = Color.white;
+            Destroy(GameObject.Find("testIngredient"));
+            startSmellGame();
+    }
+
+
+    public void invokeMethod(string method, float time)
+    {
+        Invoke(method, time);
     }
 
 
