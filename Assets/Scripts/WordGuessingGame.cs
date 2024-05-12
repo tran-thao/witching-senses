@@ -18,11 +18,17 @@ public class WordGuessingGame : MonoBehaviour
         "rainbow beam",
         "butterflywing pattern",
         "last sunray",
-        "moonflower petal",
+        "moonflower petals",
         "aurora essence",
         "heartbreak tears",
         "mirage mist",
         "shadow veil",
+        "eternal frost",
+        "unicorn mane",
+        "enigma berries",
+        "starlight dust",
+        "mountain wildflowers",
+        "flowing lava",
     };
 
     private string currentWord;
@@ -100,7 +106,8 @@ public class WordGuessingGame : MonoBehaviour
             Invoke("togglecanvas", 1.5f);
             Invoke("HideResultText", 1.5f);
             Invoke("ShowNewAnagram", 1.8f);
-           
+            GameObject.Find("SightGameManager").GetComponent<SightGameManager>().AnagramSolved();
+
         }
         else
         {

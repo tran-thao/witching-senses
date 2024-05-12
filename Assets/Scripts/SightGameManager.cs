@@ -9,6 +9,7 @@ public class SightGameManager : MonoBehaviour
     public GameObject gameOverPanel; // Reference to the game over panel
     public GameObject successPanel; // Reference to the success panel
     public GameObject endPanel;
+    public GameObject maskObject;
     public WordGuessingGame[] wordGuessingGames;
     private bool gameOver = false; // Track game over state
     public int ingredientsCollected = 0;
@@ -79,31 +80,22 @@ public class SightGameManager : MonoBehaviour
         SceneManager.LoadScene("MainMenu");
     }
 
-    public void Chestcollected()
-    {
-        ingredientsCollected++;
-        Debug.Log("ingredients collected:  " + ingredientsCollected);
-        if (ingredientsCollected >= 3 && AnagramsSolved >= 3)
-        {
-            Debug.Log("showing success panel..");
-            ShowEndPanel();
-        }
-    }
-
     public void AnagramSolved()
     {
         AnagramsSolved++;
         Debug.Log("anagrams solved: " + AnagramsSolved);
-        if (ingredientsCollected >= 3 && AnagramsSolved >= 3)
+        if (AnagramsSolved >= 3)
         {
             Debug.Log("showing success panel..");
-            ShowEndPanel();
+            Invoke("ShowEndPanel", 1.6f);
         }
     }
+
 
     void ShowEndPanel()
     {
         endPanel.SetActive(true);
-        Invoke("LoadMainMenu", 3f);
+        maskObject.SetActive(false);
+        Invoke("LoadMainMenu", 5f);
     }
 }
