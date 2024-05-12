@@ -32567,6 +32567,7 @@ MonoBehaviour:
   timerText: {fileID: 1271454466}
   gameManager: {fileID: 1231727550}
   smellGameManager: {fileID: 0}
+  sightGameManager: {fileID: 0}
 --- !u!114 &1014301439
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39067,7 +39068,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 347.77686, y: -250}
+  m_AnchoredPosition: {x: 339, y: -235}
   m_SizeDelta: {x: 65.3254, y: 18.6352}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1263994084

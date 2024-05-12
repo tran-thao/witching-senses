@@ -42382,6 +42382,7 @@ MonoBehaviour:
   timerText: {fileID: 1271454466}
   gameManager: {fileID: 0}
   smellGameManager: {fileID: 0}
+  sightGameManager: {fileID: 0}
 --- !u!114 &1014301439
 MonoBehaviour:
   m_ObjectHideFlags: 0

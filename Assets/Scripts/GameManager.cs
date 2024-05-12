@@ -71,12 +71,18 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene("MainMenu");
     }
 
+    private void LoadSmell()
+    {
+        // Load the Main menu scene by name 
+        SceneManager.LoadScene("Smell");
+    }
+
     private void Update()
     {
         if (ingredientsCollected >=3)
         {
             successPanel.SetActive(true);
-            Invoke("LoadMainMenu", 3f);
+            Invoke("LoadSmell", 3f);
         }
     }
 }
