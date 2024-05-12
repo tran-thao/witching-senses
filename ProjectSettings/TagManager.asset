@@ -6,11 +6,12 @@ TagManager:
   tags:
   - Undefined
   - smellIngredient
+  - MusicButton
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - SmellIngredients
   - Water
   - UI
   - 

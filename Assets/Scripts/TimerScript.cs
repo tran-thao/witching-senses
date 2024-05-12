@@ -10,6 +10,7 @@ public class TimerScript : MonoBehaviour
     private float timeRemaining = 240f; // 3 minutes in seconds
     public GameManager gameManager; // Reference to the GameManager script
     public SmellGameManager smellGameManager;
+    public SightGameManager sightGameManager;
 
     private void Start()
     {
@@ -39,6 +40,33 @@ public class TimerScript : MonoBehaviour
                 if (smellGameManager != null)
                 {
                     smellGameManager.TimerZero(); // Call the game over method in GameManager
+                }
+                else
+                {
+                    Debug.LogError("GameManager reference is missing in TimerScript!");
+                }
+            }
+        }
+        else if (SceneManager.GetActiveScene().name == "Sight2.0")
+        {
+            //Debug.Log("Smell level");
+
+
+            if (timeRemaining > 0)
+            {
+
+                timeRemaining -= Time.deltaTime; // Decrease the remaining time
+                UpdateTimerDisplay(); // Update the timer display
+            }
+            else
+            {
+                timeRemaining = 0; // Ensure the timer doesn't go negative
+                UpdateTimerDisplay(); // Update the timer display
+
+                // Trigger game over condition when timer reaches 0
+                if (sightGameManager != null)
+                {
+                    sightGameManager.TimerZero(); // Call the game over method in GameManager
                 }
                 else
                 {
