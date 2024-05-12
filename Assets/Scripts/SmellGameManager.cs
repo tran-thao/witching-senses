@@ -29,6 +29,7 @@ public class SmellGameManager : MonoBehaviour
 
     public GameObject ingredientsPrefab;
     public List<Sprite> smellSpritePrefabs;
+    private List<Sprite> shuffledSprites = new List<Sprite>(); // Shuffled list of sprites
 
     public int blueCount = 0;
     public int redCount = 0;
@@ -36,6 +37,8 @@ public class SmellGameManager : MonoBehaviour
 
     void Start()
     {
+        ShuffleSprites();
+
         gameStarted = false;
         testGameDone = false;
         referenceSmellSprite = GameObject.Find("referenceSmell").GetComponent<SpriteRenderer>();
@@ -44,10 +47,10 @@ public class SmellGameManager : MonoBehaviour
         // Define spawn points
         spawnPoints.Add(new Vector3(-48.2f, -20.6f, -2f));
         spawnPoints.Add(new Vector3(-48.9f, 20.3f, -2f));
-        spawnPoints.Add(new Vector3(-15.5f, 26.7f, -2f));
+        spawnPoints.Add(new Vector3(-36.7f, 2.3f, -2f));
         spawnPoints.Add(new Vector3(-3.7f, 21f, -2f));
         spawnPoints.Add(new Vector3(21.92376f, 26.7061f, -2f));
-        spawnPoints.Add(new Vector3(33.6f, -3.8f, -2f));
+        spawnPoints.Add(new Vector3(27.1f, -3.8f, -2f));
         spawnPoints.Add(new Vector3(47.3f, -20.6f, -2f));
         spawnPoints.Add(new Vector3(-25.5f, 27.2f, -2f));
         spawnPoints.Add(new Vector3(-17f, -16.5f, -2f));
@@ -81,16 +84,44 @@ public class SmellGameManager : MonoBehaviour
         {
             successPanel.SetActive(true);
 
-            Invoke("LevelTouch", 3f);
+            Invoke("LoadLevelTouch", 2f);
         }
     }
 
     public void startSmellGame()
     {
+        gameStarted = true;
         generateReferenceSmell();
         SpawnPrefabs();
     }
 
+    void ShuffleSprites()
+    {
+        shuffledSprites.AddRange(smellSpritePrefabs); // Copy sprites to shuffled list
+        int n = shuffledSprites.Count;
+        while (n > 1)
+        {
+            n--;
+            int k = Random.Range(0, n + 1);
+            Sprite value = shuffledSprites[k];
+            shuffledSprites[k] = shuffledSprites[n];
+            shuffledSprites[n] = value;
+        }
+    }
+
+    Sprite GetNextSprite()
+    {
+        if (shuffledSprites.Count == 0)
+        {
+            Debug.LogError("No more sprites available!");
+            return null;
+        }
+
+        Sprite nextSprite = shuffledSprites[0];
+        shuffledSprites.RemoveAt(0);
+        return nextSprite;
+    }
+    
     void SpawnPrefabs()
     {
         int spawnedCount = 0;
@@ -110,8 +141,18 @@ public class SmellGameManager : MonoBehaviour
             // Determine which color to spawn
             Color ingredientColor = GetNextIngredientColor(blueCount, redCount, yellowCount);
 
-            // Get a random sprite from the list of sprites
-            Sprite randomSprite = GetRandomSprite(usedSprites);
+            //// Get a random sprite from the list of sprites
+            //Sprite randomSprite = GetRandomSprite(usedSprites);
+
+            // Get the next sprite from the shuffled list
+            Sprite randomSprite = GetNextSprite();
+
+            // Check if the sprite is null (no more sprites available)
+            if (randomSprite == null)
+            {
+                Debug.LogError("No more sprites available to spawn!");
+                return;
+            }
 
             // Instantiate prefab at the spawn point
             GameObject ingred = Instantiate(smellIngredient, spawnPoint, Quaternion.identity);
@@ -149,6 +190,7 @@ public class SmellGameManager : MonoBehaviour
             TimerZero();
         }
     }
+
 
 
     Sprite GetRandomSprite(List<Sprite> usedSprites)
@@ -280,6 +322,11 @@ public class SmellGameManager : MonoBehaviour
         SceneManager.LoadScene("MainMenu");
     }
 
+    private void LoadLevelTouch()
+    {
+        SceneManager.LoadScene("LevelTouch");
+    }
+
 
     public void SpawnIngredients()
     {
@@ -309,6 +356,7 @@ public class SmellGameManager : MonoBehaviour
             popUp.ShowPopUp(popUp.testGameDone);
             mySmellSprite.color = Color.white;
             Destroy(GameObject.Find("testIngredient"));
+            
             startSmellGame();
     }
 
