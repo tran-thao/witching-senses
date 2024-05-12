@@ -77,7 +77,8 @@ public class SmellGameManager : MonoBehaviour
         if (ingredientsCollected >= 3)
         {
             successPanel.SetActive(true);
-            Invoke("LoadMainMenu", 3f);
+
+            Invoke("LevelTouch", 3f);
         }
     }
 

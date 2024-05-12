@@ -2,11 +2,11 @@ using UnityEngine;
 
 public class IngredientScript : MonoBehaviour
 {
-    SmellGameManager gameManagerScript;
+    GameManager gameManagerScript;
 
     private void Start()
     {
-        gameManagerScript = GameObject.Find("smellGameManager").GetComponent<SmellGameManager>();
+        gameManagerScript = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
