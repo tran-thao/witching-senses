@@ -131,6 +131,12 @@ public class LevelManagerTouch : MonoBehaviour
         SceneManager.LoadScene("MainMenu");
     }
 
+    private void LoadLevelSight()
+    {
+        // Load the Main menu scene by name 
+        SceneManager.LoadScene("Sight2.0");
+    }
+
     private void LoadSuccess()
     {
         // Load the Main menu scene by name 
@@ -142,7 +148,9 @@ public class LevelManagerTouch : MonoBehaviour
         if (levelCompleted)
         {
             Invoke("LoadSuccess", 2f);
-    
+           // Invoke("LoadLevelSight", 3f);
+
+
         }
     }
 
